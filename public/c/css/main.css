@@ -1,0 +1,70 @@
+﻿/*index*/
+body{padding-bottom:1.3rem;color: #3e3a39}
+.body-bg{background-color: #f0f5f8}
+.top-card{background-color: #fff;position: relative;overflow: hidden;}
+.top-card img{width:100%;}
+.card-warp{margin: .3rem .3rem 0 .3rem;}
+.head{color: #fff;font-size: .3rem;text-align: center;width:100%;}
+.head img{border-radius: 50px;border: 3px solid #ff8326;width:1.4rem;height: 1.4rem;position: absolute;top:1rem;left: 50%;margin-left: -.7rem;}
+.head p{position: absolute;top:2.6rem;width:100%;}
+.card-list li{float: left;width: 49%;font-size: .32rem;margin-bottom: .2rem}
+.card-list .icon{display: inline-block;float: left;width:.5rem;height: .5rem;background-size: .5rem .5rem;overflow: hidden;margin: 0 .2rem 0 1rem}
+.card-list p{margin-top: .15rem;text-align: center;}
+.icon-card{background: url(../images/card.png) no-repeat;}
+.icon-record{background: url(../images/record.png) no-repeat;}
+.icon-consumption{background: url(../images/consumption.png) no-repeat;}
+.icon-integration{background: url(../images/integration.png) no-repeat;}
+.icon-payment{background: url(../images/payment.png) no-repeat;}
+.icon-more{background: url(../images/more.png) no-repeat;}
+.main-list{margin: .2rem 0;background-color: #fff;font-size: .32rem;overflow: hidden;}
+.main-list li{height: 1.15rem;border-bottom: 1px solid #e6e6e6;}
+.main-list .icon{display: inline-block;float: left;width:.5rem;height: .5rem;background-size: .5rem .5rem;overflow: hidden;margin: .35rem .2rem 0 .25rem}
+.main-list span{display: inline-block;float: left;margin-top: .35rem}
+.main-list .more{display: inline-block;float: right;width:.45rem;height: .45rem;background-size: .45rem .45rem;overflow: hidden;margin: .35rem .2rem 0 .25rem;}
+.footer{width:100%;height:.96rem;position:fixed;bottom:0;left:0;background:#fff;border-top: 1px solid #cbcbcb}
+.footer li{float: left;font-size:.24rem;width: 33%;text-align: center;}
+.footer li.active{color: #ff6d00}
+.footer .icon{display: inline-block;width:.5rem;height: .5rem;background-size: .5rem .5rem;overflow: hidden;margin: .05rem auto 0 auto}
+.icon-home{background: url(../images/home.png) no-repeat;}
+.icon-home1{background: url(../images/home1.png) no-repeat;}
+.icon-pay{background: url(../images/pay.png) no-repeat;}
+.icon-pay1{background: url(../images/pay1.png) no-repeat;}
+.icon-personal{background: url(../images/personal.png) no-repeat;}
+.icon-personal1{background: url(../images/personal1.png) no-repeat;}
+/*充值记录*/
+.list{font-size: .32rem;}
+.list li{border-bottom: 1px solid #eee;overflow: hidden;padding: .2rem}
+.list .text{float: left;}
+.list .type,.list .time{font-size: .24rem;color: #6a6a6a;margin-top: .05rem}
+.list .data{float: right;color: #fe6b26;font-size: .42rem;margin: .4rem 0}
+.no-more{font-size: .28rem;color: #8d8d8d;text-align: center;margin: .5rem}
+.detail{font-size: .3rem;background-color: #fff;text-align: center;overflow: hidden;}
+.detail .title{padding-top: .3rem;overflow: hidden;}
+.detail .data{color: #fe6b26;font-size: .5rem;margin: .2rem 0;overflow: hidden;}
+.detail .name{float: left;}
+.detail .value{float: right;}
+.detail li{margin: 0 .3rem;clear: both;line-height: .85rem;height: .85rem;overflow: hidden;}
+.detail ul{margin-top: .5rem}
+.rules{background-color: #fd761a;height: .45rem;color: #fff;padding: .15rem}
+.fl{float:left;}
+.fr{float:right;}
+.rules-detail{font-size: .34rem;font-weight: bold;text-align: center;margin: .25rem}
+.rules-container{margin: .2rem;font-size: .28rem;line-height: .5rem}
+.personal-data{background-color: #fff;}
+.personal-data li{border-bottom: 1px solid #eee;font-size: .3rem;overflow: hidden;padding: .2rem}
+.personal-data .name{float: left;}
+.personal-data .value{float: right;}
+.personal-data input{text-align: right;border:1px solid #eee;height: .5rem;width: 3rem}
+.personal-data .button{height: .8rem;background-color: #ff6c29;color: #fff;margin: .3rem;border-radius: 30px;font-size: .34rem;text-align: center;line-height: .8rem}
+.card-detail{background-color: #fff;text-align: center;}
+.card-title{font-size: .32rem;text-align: left;border-bottom: 1px solid #eee;height: .82rem}
+.card-title i{display: inline-block;float: left;width:.5rem;height: .5rem;background-size: .5rem .5rem;overflow: hidden;margin: .2rem}
+.card-title span{display: inline-block;margin-top: .2rem;}
+.member{width: 100%;line-height: .7rem}
+.member .left{width: 2rem;padding-right: .3rem;color: #898989}
+.mycard{color: #fff;font-size: .32rem}
+.mycard li{margin-top: .3rem;position: relative;}
+.mycard img{width:92%;margin-left: 4%}
+.mycard li div{position: absolute;top:.2rem;left:.7rem;}
+.mycard li .type1{font-size: .28rem;padding-top: .5rem;}
+.mycard li .type2{font-size: .28rem;padding-top: .15rem;}
