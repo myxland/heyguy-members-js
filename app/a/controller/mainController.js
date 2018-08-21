@@ -4,7 +4,7 @@
 
 'use strict';
 
-app.controller('mainController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
+angular.module("adminApp").controller('mainController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
 
     alert("come in main controller");
 
