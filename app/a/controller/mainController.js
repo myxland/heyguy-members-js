@@ -4,8 +4,49 @@
 
 'use strict';
 
+var admin_user = JSON.parse(localStorage.getItem("adminUser"));
+
 angular.module("adminApp").controller('mainController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
 
-    alert("come in main controller");
+    if(admin_user == ""||admin_user==undefined){
+        $window.location.href = "/a";
+    }
+
+
+    /**
+     * 注销
+     */
+    $scope.logout = function(){
+        var layer = layui.layer;
+        var dialog = layui.dialog;
+        dialog.confirm({
+            message:'您确定退出？',
+            success:function(){
+                $http({
+                    method:"POST",
+                    url:base_url+"/user/admin/logout",
+                    data:{
+                        user_phone:admin_user.userPhone,
+                        type:"9"
+                    },
+                    cache:false,
+                }).success(function (data,status) {
+                    if(data.code=='0'){
+                        localStorage.AdminUser = data.data;
+                        $window.location.href = "/a";
+                        localStorage.AdminUser = "";
+                    }else{
+                        layui.layer.alert('系统繁忙，请稍后再试');
+                    }
+                })
+                    .error(function (response,status,header) {
+                        layui.layer.alert('系统繁忙、稍后再试');
+                    });
+            },
+            cancel:function(){
+            }
+        })
+
+    }
 
 }]);

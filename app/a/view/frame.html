@@ -2,17 +2,59 @@
 <html ng-app="adminApp">
 <head>
     <meta charset="UTF-8">
-    <title>主页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>欢迎登录系统后台管理</title>
+    <link rel="stylesheet" type="text/css" href="/a/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="/a/css/admin.css"/>
 </head>
-<body>
-
-frame
-<div ui-view></div>
+<body ng-controller="mainController">
+<div class="main-layout" id='main-layout'>
+    <!--侧边栏-->
+    <div class="main-layout-side">
+        <div class="m-logo">
+        </div>
+        <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
+            <li class="layui-nav-item">
+                <p class="active"><i class="icon-management"></i>商户管理</p>
+            </li>
+            <li class="layui-nav-item">
+                <p><i class="icon-setup"></i>系统管理</p>
+            </li>
+        </ul>
+    </div>
+    <!--右侧内容-->
+    <!--右侧内容-->
+    <div class="main-layout-container">
+        <!--头部-->
+        <div class="main-layout-header">
+            <ul class="layui-nav" lay-filter="rightNav">
+                <li class="layui-nav-item">
+                    <img src="/a/images/head.jpg" class="head">
+                    <span class="nickname">JACK</span>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" ng-click="logout();">退出</a></li>
+            </ul>
+        </div>
+        <!--主体内容-->
+        <div class="main-layout-body">
+            <!--tab 切换-->
+            <div ui-view></div>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="main-mask">
+    </div>
+</div>
 </body>
-<script src="/angular/angular-1.7.3.js" type="text/javascript" charset="utf-8"></script>
+<script src="/a/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="/a/js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="/a/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="/angular/angular-1.5.11.js" type="text/javascript" charset="utf-8"></script>
 <script src="/angular/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
 <script src="/angular/ocLazyLoad.js" type="text/javascript" charset="utf-8"></script>
 <script src="/a/controller/router.js" type="text/javascript" charset="utf-8"></script>
-
-
+<script src="/a/controller/mainController.js" type="text/javascript" charset="utf-8"></script>
 </html>

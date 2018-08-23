@@ -104,8 +104,7 @@ app.controller('loginController',['$scope','$http','$location','$window',functio
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                console.log(data.data);
-                localStorage.AdminUser = data.data;
+                localStorage.setItem("adminUser",JSON.stringify(data.data));//AdminUser = data.data;
                 $window.location.href = "/a/frame";
             }else{
                 layui.layer.alert('账户或密码不正确');

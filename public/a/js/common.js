@@ -1,5 +1,5 @@
 layui.config({
-	base: '../static/js/module/'
+	base: '/a/js/module/'
 }).extend({
 	dialog: 'dialog',
 });
@@ -20,7 +20,7 @@ layui.use(['form', 'jquery', 'laydate', 'layer', 'laypage', 'dialog',   'element
 		form.render('checkbox');
 	});
 	//渲染表单
-	form.render();	
+	form.render();
 	//顶部添加
 	$('.addBtn').click(function() {
 		var url=$(this).attr('data-url');
@@ -51,7 +51,7 @@ layui.use(['form', 'jquery', 'laydate', 'layer', 'laypage', 'dialog',   'element
 
 		dialog.tips('批量排序', '.listOrderBtn');
 
-	})	
+	})
 	//顶部批量删除
 	$('.delBtn').click(function() {
 		var url=$(this).attr('data-url');

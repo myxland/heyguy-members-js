@@ -1,2 +1,78 @@
-1231313
+<div class="wrap-container clearfix">
+    <div class="column-content-detail">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+                <button class="layui-btn layui-btn-normal" lay-submit="search">搜索</button>
+                <p class="layui-btn layui-btn-danger">新增商户</p>
+            </div>
+        </form>
+        <div class="layui-form" id="table-list">
+            <table class="layui-table" lay-even lay-skin="nob">
+                <colgroup>
+                    <col width="250">
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                    <col>
+                    <col width="250">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>商户名</th>
+                    <th class="table-center">电话</th>
+                    <th class="table-center">账户</th>
+                    <th class="table-center">密码</th>
+                    <th class="table-center">账户状态</th>
+                    <th class="table-center">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>玩具</td>
+                    <td class="table-center">15845623659</td>
+                    <td class="table-center">15845623659</td>
+                    <td class="table-center">1989-10-14</td>
+                    <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-normal">正常</button></td>
+                    <td class="table-center">
+                        <div class="layui-inline">
+                            <button class="layui-btn layui-btn-small layui-btn-normal">冻结</button>
+                            <button class="layui-btn layui-btn-small layui-btn-danger">修改</button>
+                            <button class="layui-btn layui-btn-small layui-btn-warm delBtn" data-id="1" data-url="del.html">删除</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>玩具</td>
+                    <td class="table-center">15845623659</td>
+                    <td class="table-center">15845623659</td>
+                    <td class="table-center">1989-10-14</td>
+                    <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-danger">冻结</button></td>
+                    <td class="table-center">
+                        <div class="layui-inline">
+                            <button class="layui-btn layui-btn-small layui-btn-normal">冻结</button>
+                            <button class="layui-btn layui-btn-small layui-btn-danger">修改</button>
+                            <button class="layui-btn layui-btn-small layui-btn-warm delBtn" data-id="1" data-url="del.html">删除</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="page-wrap">
+                <ul class="pagination">
+                    <li class="disabled"><span>«</span></li>
+                    <li class="active"><span>1</span></li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">»</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
