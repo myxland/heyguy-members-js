@@ -15,10 +15,10 @@
 				<div class="m-login-warp">
 					<form class="layui-form">
 						<div class="layui-form-item">
-							<input type="text" name="title" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
+							<input type="text" name="title" ng-model="username" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
-							<input type="text" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+							<input type="text" name="password" ng-model="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
 							<div class="layui-inline">
@@ -41,18 +41,17 @@
 				<p class="copyright">Copyright 2018</p>
 			</div>
 		</div>
+		<span us-spinner></span>
 		<script src="/a/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="/angular/angular-1.7.3.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/angular/angular-1.5.11.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/angular/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/angular/ocLazyLoad.js" type="text/javascript" charset="utf-8"></script>
+		<script src="/config.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/a/controller/loginController.js" type="text/javascript" charset="utf-8"></script>
 
 		<script>
 			layui.use(['form', 'layedit', 'laydate'], function() {
-				var form = layui.form(),
-					layer = layui.layer;
-
-
+				var form = layui.form();
 				//自定义验证规则
 				form.verify({
 					title: function(value) {
@@ -62,18 +61,7 @@
 					},
 					password: [/(.+){6,12}$/, '密码必须6到12位'],
 					verity: [/(.+){6}$/, '验证码必须是6位'],
-
 				});
-
-
-				//监听提交
-				form.on('submit(login)', function(data) {
-					layer.alert(JSON.stringify(data.field), {
-						title: '最终的提交信息'
-					})
-					return false;
-				});
-
 			});
 		</script>
 	</body>

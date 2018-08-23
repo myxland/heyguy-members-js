@@ -12,6 +12,7 @@ app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 function ResponseInterceptor($q,$window) {
     return {
         request: function(config){
+            layui.layer.load();
             return config;
         },
         requestError: function(err){
@@ -19,6 +20,7 @@ function ResponseInterceptor($q,$window) {
         },
         response: function(response){
             console.log(response);
+            layui.layer.closeAll('loading');
             if(response.data.CODE=='1003'){
                 alert('请登录');
                 $window.location.href="/";
@@ -41,6 +43,7 @@ function ResponseInterceptor($q,$window) {
 
 
 app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($stateProvider,$httpProvider,$urlRouterProvider){
+
     //$httpProvider.defaults.headers.common = { 'key':key,'id':shopid};
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -88,8 +91,34 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
 app.controller('loginController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
 
     $scope.login = function(){
-        alert("1");
-        $window.location.href = "/a/frame";
+        var username = $scope.username;
+        var password = $scope.password;
+        $http({
+            method:"POST",
+            url:base_url+"/user/admin/login",
+            data:{
+                user_phone:username,
+                password:password,
+                type:"9"
+            },
+            cache:false,
+        }).success(function (data,status) {
+            if(data.code=='0'){
+                console.log(data.data);
+                localStorage.AdminUser = data.data;
+                $window.location.href = "/a/frame";
+            }else{
+                layui.layer.alert('账户或密码不正确');
+            }
+        })
+            .error(function (response,status,header) {
+                layui.layer.alert('系统繁忙、稍后再试');
+            });
+
+
+
+
+
     }
 
 }]);
