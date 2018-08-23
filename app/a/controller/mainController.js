@@ -4,8 +4,6 @@
 
 'use strict';
 
-var admin_user = JSON.parse(localStorage.getItem("adminUser"));
-
 angular.module("adminApp").controller('mainController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
 
     if(admin_user == ""||admin_user==undefined){
@@ -32,9 +30,8 @@ angular.module("adminApp").controller('mainController',['$scope','$http','$locat
                     cache:false,
                 }).success(function (data,status) {
                     if(data.code=='0'){
-                        localStorage.AdminUser = data.data;
+                        localStorage.clear();
                         $window.location.href = "/a";
-                        localStorage.AdminUser = "";
                     }else{
                         layui.layer.alert('系统繁忙，请稍后再试');
                     }

@@ -4,6 +4,8 @@
 
 'use strict';
 
+var admin_user = JSON.parse(localStorage.getItem("adminUser"));
+
 var app = angular.module('adminApp',['ui.router','oc.lazyLoad']);
 
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
@@ -19,8 +21,8 @@ function ResponseInterceptor($q,$window) {
         response: function(response){
             console.log(response);
             if(response.data.CODE=='1003'){
-                alert('请登录');
-                $window.location.href="/";
+                layui.layer.alert('请登录');
+                $window.location.href="/a";
             }else{
                 return response;
             }
@@ -40,7 +42,10 @@ function ResponseInterceptor($q,$window) {
 
 
 app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($stateProvider,$httpProvider,$urlRouterProvider){
-    //$httpProvider.defaults.headers.common = { 'key':key,'id':shopid};
+    if(admin_user != null&&admin_user!=undefined){
+        $httpProvider.defaults.headers.common = { 'key':admin_user.login_key,'id':admin_user.id,'user_type':9};
+    }
+
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.interceptors.push('ResponseInterceptor');
@@ -84,16 +89,16 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
 
     $stateProvider.state('/main', { //导航用的名字，如<a ui-sref="login">login</a>里的login
             url: '/main',
-            templateUrl:'./view/main.html',
+            templateUrl:'./view/main.html'
             //controller:'mainController',
-            resolve: {
-                deps: ['$ocLazyLoad',
-                    function ($ocLazyLoad) {
-                        return $ocLazyLoad.load(
-                             ['./controller/mainController.js']
-                        )
-                    }]
-            }
+            // resolve: {
+            //     deps: ['$ocLazyLoad',
+            //         function ($ocLazyLoad) {
+            //             return $ocLazyLoad.load(
+            //                  ['./controller/mainController.js']
+            //             )
+            //         }]
+            // }
         });
 
     $urlRouterProvider.otherwise('/main');

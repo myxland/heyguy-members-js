@@ -22,8 +22,7 @@ function ResponseInterceptor($q,$window) {
             console.log(response);
             layui.layer.closeAll('loading');
             if(response.data.CODE=='1003'){
-                alert('请登录');
-                $window.location.href="/";
+                $window.location.href="/a";
             }else{
                 return response;
             }
