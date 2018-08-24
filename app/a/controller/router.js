@@ -90,16 +90,20 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
     $stateProvider.state('/main', { //导航用的名字，如<a ui-sref="login">login</a>里的login
             url: '/main',
             templateUrl:'./view/main.html'
-            //controller:'mainController',
-            // resolve: {
-            //     deps: ['$ocLazyLoad',
-            //         function ($ocLazyLoad) {
-            //             return $ocLazyLoad.load(
-            //                  ['./controller/mainController.js']
-            //             )
-            //         }]
-            // }
-        });
+        }).state('/sysManage', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+            url: '/sysManage',
+            templateUrl:'./view/sysAccount.html',
+            controller:'sysAccountController',
+            resolve: {
+                deps: ['$ocLazyLoad',
+                    function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name:'adminApp',
+                             files:['./controller/sysAccountController.js']}
+                        )
+                    }]
+            }
+    });
 
     $urlRouterProvider.otherwise('/main');
 

@@ -17,10 +17,10 @@
         </div>
         <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
             <li class="layui-nav-item">
-                <p class="active"><i class="icon-management"></i>商户管理</p>
+                <p id="main" class="active"><i class="icon-management"></i>商户管理</p>
             </li>
             <li class="layui-nav-item">
-                <p><i class="icon-setup"></i>系统管理</p>
+                <p id="sysManage"><i class="icon-setup"></i>系统管理</p>
             </li>
         </ul>
     </div>
@@ -48,6 +48,7 @@
     </div>
 </div>
 </body>
+<script src="/jquery/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/a/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="/a/js/main.js" type="text/javascript" charset="utf-8"></script>
 <script src="/a/js/common.js" type="text/javascript" charset="utf-8"></script>
@@ -57,4 +58,11 @@
 <script src="/angular/ocLazyLoad.js" type="text/javascript" charset="utf-8"></script>
 <script src="/a/controller/router.js" type="text/javascript" charset="utf-8"></script>
 <script src="/a/controller/mainController.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    $(".layui-nav-item p").click(function(){
+        $("p.active").removeClass("active");
+        $(this).addClass("active");
+        window.location.href = "frame#"+$(this).attr('id');
+    });
+</script>
 </html>
