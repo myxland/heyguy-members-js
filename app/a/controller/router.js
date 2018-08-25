@@ -10,24 +10,38 @@ var app = angular.module('adminApp',['ui.router','oc.lazyLoad']);
 
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 
+var layer = layui.layer;
+
 function ResponseInterceptor($q,$window) {
     return {
         request: function(config){
+            if(layer!=undefined){
+                layer.load();
+            }
             return config;
         },
         requestError: function(err){
             return $q.reject(err);
         },
         response: function(response){
+            if(layer!=undefined){
+                layer.closeAll('loading');
+            }
             console.log(response);
-            if(response.data.CODE=='1003'){
-                layui.layer.alert('请登录');
+            if(response.data=='1003'){
+                layer.alert('请登录');
                 $window.location.href="/a";
-            }else{
+            } else if(response.data=='1004'){
+                layer.alert('超时，请登录');
+                $window.location.href="/a";
+            } else{
                 return response;
             }
         },
         responseError: function(err){
+            if(layer!=undefined){
+                layer.closeAll('loading');
+            }
             if(-1 === err.status) {
                 // 远程服务器无响应
             } else if(500 === err.status) {
@@ -43,7 +57,7 @@ function ResponseInterceptor($q,$window) {
 
 app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($stateProvider,$httpProvider,$urlRouterProvider){
     if(admin_user != null&&admin_user!=undefined){
-        $httpProvider.defaults.headers.common = { 'key':admin_user.login_key,'id':admin_user.id,'user_type':9};
+        $httpProvider.defaults.headers.common = { 'key':admin_user.loginKey,'id':admin_user.id,'user_type':9};
     }
 
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -103,6 +117,32 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                         )
                     }]
             }
+    }).state('/addAccount', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addAccount',
+        templateUrl:'./view/addAccount.html',
+        controller:'addAccountController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'adminApp',
+                        files:['./controller/addAccountController.js']}
+                    )
+                }]
+        }
+    }).state('/addShop', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addShop',
+        templateUrl:'./view/addShop.html',
+        controller:'addShopController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'adminApp',
+                        files:['./controller/addShopController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/main');

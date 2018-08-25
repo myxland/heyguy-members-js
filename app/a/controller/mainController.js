@@ -43,7 +43,13 @@ angular.module("adminApp").controller('mainController',['$scope','$http','$locat
             cancel:function(){
             }
         })
+    }
 
+    /**
+     * 新增商家按钮点击
+     */
+    $scope.addShopClick = function(){
+        $location.path("addShop");
     }
 
 }]);

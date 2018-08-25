@@ -28,6 +28,7 @@ function ResponseInterceptor($q,$window) {
             }
         },
         responseError: function(err){
+            layui.layer.closeAll('loading');
             if(-1 === err.status) {
                 // 远程服务器无响应
             } else if(500 === err.status) {

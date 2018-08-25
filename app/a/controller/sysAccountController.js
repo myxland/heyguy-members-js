@@ -1,7 +1,14 @@
 'use strict';
 
-//var app = angular.module("adminApp");
+var app = angular.module("adminApp");
 
-angular.module("adminApp").controller('sysAccountController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
-    alert("系统管理");
+app.controller('sysAccountController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
+
+    /**
+     * 新增商户按钮点击
+     */
+    $scope.addAccountClick = function(){
+        $location.path("addAccount");
+    }
+
 }]);
