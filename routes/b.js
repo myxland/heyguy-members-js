@@ -9,4 +9,8 @@ router.get('/', function(req, res, next) {
     res.render('app/b/view/login', { title: '' });
 });
 
+router.get('/frame', function(req, res, next) {
+    res.render('app/b/view/frame', { title: '' });
+});
+
 module.exports = router;

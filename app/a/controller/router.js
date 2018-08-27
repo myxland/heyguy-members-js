@@ -6,7 +6,7 @@
 
 var admin_user = JSON.parse(localStorage.getItem("adminUser"));
 
-var app = angular.module('adminApp',['ui.router','oc.lazyLoad']);
+var app = angular.module('adminApp',['ui.router','oc.lazyLoad','ui.bootstrap']);
 
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 
