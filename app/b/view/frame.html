@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="shopApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>欢迎登录商家管理系统</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/b/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="/b/css/admin.css"/>
+
+</head>
+<body ng-controller="mainController">
+<div class="main-layout" id='main-layout'>
+    <!--侧边栏-->
+    <div class="main-layout-side">
+        <div class="m-logo">
+        </div>
+        <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
+            <li class="layui-nav-item">
+                <p class="active"><i class="nav-icon1"></i>后台主页</p>
+            </li>
+            <li class="layui-nav-item">
+                <p><i class="nav-icon2"></i>会员管理</p>
+            </li>
+            <li class="layui-nav-item">
+                <p><i class="nav-icon3"></i>消费管理</p>
+            </li>
+            <li class="layui-nav-item">
+                <p><i class="nav-icon4"></i>充值管理</p>
+            </li>
+            <li class="layui-nav-item">
+                <p><i class="nav-icon5"></i>优惠管理</p>
+            </li>
+        </ul>
+    </div>
+    <!--右侧内容-->
+    <!--右侧内容-->
+    <div class="main-layout-container">
+        <!--头部-->
+        <div class="main-layout-header">
+            <ul class="layui-nav" lay-filter="rightNav">
+                <li class="layui-nav-item">
+                    <img src="/b/images/head.jpg" class="head">
+                    <span class="nickname">JACK</span>
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" ng-click="logout();">退出</a></li>
+            </ul>
+        </div>
+        <!--主体内容-->
+        <div class="main-layout-body">
+            <!--tab 切换-->
+            <div ui-view></div>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="main-mask">
+    </div>
+</div>
+</body>
+<script src="/jquery/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/b/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="/b/js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="/b/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="/angular/angular-1.5.11.js" type="text/javascript" charset="utf-8"></script>
+<script src="/bootstrap/js/ui-bootstrap-tpls-1.3.2.js" type="text/javascript" charset="utf-8"></script>
+<script src="/angular/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>
+<script src="/angular/ocLazyLoad.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script src="/b/controller/router.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/b/controller/mainController.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    $(".layui-nav-item p").click(function(){
+        $("p.active").removeClass("active");
+        $(this).addClass("active");
+        window.location.href = "frame#"+$(this).attr('id');
+    });
+</script>
+</html>
