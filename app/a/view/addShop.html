@@ -4,43 +4,60 @@
 			<label class="layui-form-label">新增商户</label>
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">名称：</label>
+			<label class="layui-form-label">店铺名称：</label>
 			<div class="layui-input-block">
-				<input type="text" name="title" required lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+				<input style="height: 35px;" ng-model="shop_name" type="text" name="title" required lay-verify="required" placeholder="请输入店铺名称" autocomplete="off" class="layui-input">
 			</div>
 
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">电话号：</label>
+			<label class="layui-form-label">店铺地址：</label>
 			<div class="layui-input-block">
-				<input type="text" name="title" required lay-verify="required" placeholder="请输入电话号" autocomplete="off" class="layui-input">
+				<input style="height: 35px;" ng-model="shop_addr" type="text"  name="title" required lay-verify="required" placeholder="请输入店铺地址" autocomplete="off" class="layui-input">
 			</div>
 
 		</div>
 		<div class="layui-form-item">
 			<label class="layui-form-label">帐户名：</label>
 			<div class="layui-input-block">
-				<input type="text" name="title" required lay-verify="required" placeholder="请输入帐户名" autocomplete="off" class="layui-input">
+				<input style="height: 35px;" ng-model="shop_account" type="text" name="title" required lay-verify="required" placeholder="请输入帐户名" autocomplete="off" class="layui-input">
+			</div>
+
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否连锁：</label>
+			<div class="layui-input-block">
+				<input ng-model="shop_chain" type="radio"  name="chain" value="1" title="是">
+				<input ng-model="shop_chain"  type="radio"  name="chain" value="0" title="否">
+			</div>
+
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">老板姓名：</label>
+			<div class="layui-input-block">
+				<input style="height: 35px;" ng-model="shop_owner" type="text" name="title" required lay-verify="required" placeholder="请输入老板姓名" autocomplete="off" class="layui-input">
 			</div>
 
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">密码：</label>
+			<label class="layui-form-label">老板电话：</label>
 			<div class="layui-input-block">
-				<input type="text" name="title" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+				<input style="height: 35px;" ng-model="shop_owner_phone" type="text" name="title" required lay-verify="required" placeholder="请输入老板电话" autocomplete="off" class="layui-input">
 			</div>
 
 		</div>
 		<div class="layui-form-item">
-			<label class="layui-form-label">确认密码：</label>
+			<label class="layui-form-label">营业面积：</label>
 			<div class="layui-input-block">
-				<input type="text" name="title" required lay-verify="required" placeholder="请确认密码" autocomplete="off" class="layui-input">
+				<input style="height: 35px;" ng-model="shop_area" type="text" name="title" placeholder="请输入营业面积" autocomplete="off" class="layui-input">
 			</div>
-
 		</div>
+
 		<div class="layui-form-item">
 			<div class="layui-input-block">
-				<button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo">立即提交</button>
+				<button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo" ng-click="addShop();">立即提交</button>
 				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 			</div>
 		</div>
