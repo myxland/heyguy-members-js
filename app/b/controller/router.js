@@ -143,6 +143,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/addRecharge', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addRecharge',
+        templateUrl:'./view/addRecharge.html',
+        controller:'addRechargeController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addRechargeController.js']}
+                    )
+                }]
+        }
     }).state('/consume', { //导航用的名字，如<a ui-sref="login">login</a>里的login
         url: '/consume',
         templateUrl:'./view/consume.html',
