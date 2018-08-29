@@ -1,0 +1,66 @@
+<div class="wrap-container clearfix">
+	<div class="column-content-detail">
+		<form class="layui-form" action="">
+			<div class="layui-form-item">
+				<p class="layui-btn layui-btn-danger" ng-click="addDiscountClick();">新增优惠</p>
+			</div>
+		</form>
+		<div class="layui-form" id="table-list">
+			<table class="layui-table" lay-even lay-skin="nob">
+				<colgroup>
+					<col width="20%">
+					<col width="60%">
+					<col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th class="table-center">编号</th>
+						<th class="table-center">优惠名称</th>
+						<th class="table-center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in discountList">
+						<td class="table-center">{{(currentPage-1)*prePage+$index+1}}</td>
+						<td class="table-center">{{a.name}}</td>
+						<td class="table-center">
+							<div class="layui-inline">
+								<button class="layui-btn layui-btn-small layui-btn-defult" ng-click="updateDiscount(a.id);">修改</button>
+								<button class="layui-btn layui-btn-small layui-btn-warm delBtn" ng-click="deleteDiscount(a.id);">删除</button>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="18">
+							<uib-pagination  items-per-page="prePage" ng-change="getOnePageDiscount()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="第一页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true"></uib-pagination>
+							共：{{totalItems}} 条
+						</td>
+					</tr>
+					<!--
+					<tr>
+						<td>满50减5</td>
+						<td class="table-center">
+							<div class="layui-inline">
+								<button class="layui-btn layui-btn-small layui-btn-danger">修改</button>
+								<button class="layui-btn layui-btn-small layui-btn-warm delBtn" data-id="1" data-url="del.html">删除</button>
+							</div>
+						</td>
+					</tr>
+					-->
+				</tbody>
+			</table>
+			<div class="page-wrap">
+				<ul class="pagination">
+					<li class="disabled"><span>«</span></li>
+					<li class="active"><span>1</span></li>
+					<li>
+						<a href="#">2</a>
+					</li>
+					<li>
+						<a href="#">»</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

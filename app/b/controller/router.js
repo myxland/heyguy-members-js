@@ -104,10 +104,86 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
     $stateProvider.state('/main', { //导航用的名字，如<a ui-sref="login">login</a>里的login
         url: '/main',
         templateUrl:'./view/main.html'
+    }).state('/discount', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/discount',
+        templateUrl:'./view/discount.html',
+        controller:'discountController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/discountController.js']}
+                    )
+                }]
+        }
+    }).state('/addDiscount', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addDiscount',
+        templateUrl:'./view/addDiscount.html',
+        controller:'addDiscountController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addDiscountController.js']}
+                    )
+                }]
+        }
+    }).state('/recharge', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/recharge',
+        templateUrl:'./view/recharge.html',
+        controller:'rechargeController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/rechargeController.js']}
+                    )
+                }]
+        }
+    }).state('/addRecharge', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addRecharge',
+        templateUrl:'./view/addRecharge.html',
+        controller:'addRechargeController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addRechargeController.js']}
+                    )
+                }]
+        }
+    }).state('/consume', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/consume',
+        templateUrl:'./view/consume.html',
+        controller:'consumeController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/consumeController.js']}
+                    )
+                }]
+        }
+    }).state('/user', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/user',
+        templateUrl:'./view/user.html',
+        controller:'userController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/userController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/main');
-
-
 
 }]);
