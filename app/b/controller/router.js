@@ -182,6 +182,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/addUser', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addUser',
+        templateUrl:'./view/addUser.html',
+        controller:'addUserController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addUserController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/main');

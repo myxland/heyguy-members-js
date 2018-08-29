@@ -3,15 +3,15 @@
  */
 'use strict';
 
-var app = angular.module("adminApp");
+var app = angular.module("shopApp");
 
-app.controller('addAccountController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
+app.controller('userController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
 
 
     /**
      * 新增系统管理员
      */
-    $scope.addAccount = function(){
+    $scope.addUser = function(){
         var phone = $scope.phone;
         if(phone==undefined||phone==''){
             return;

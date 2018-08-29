@@ -37,8 +37,8 @@ app.controller('addDiscountController',['$scope','$http','$location','$window',f
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                $scope.reset();
-                layui.layer.alert("成功");
+                $scope.resetDiscount();
+                layui.layer.alert("添加成功");
             }else{
                 layui.layer.alert(data.msg);
             }
@@ -50,7 +50,7 @@ app.controller('addDiscountController',['$scope','$http','$location','$window',f
     /**
      * 重置表单
      */
-    $scope.reset = function(){
+    $scope.resetDiscount = function(){
         $scope.name = '';
         $scope.fullMoney = '';
         $scope.addMoney = '';
