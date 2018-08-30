@@ -4,7 +4,7 @@
 
 'use strict';
 
-angular.module("adminApp").controller('mainController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
+app.controller('mainController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data) {
 
     if(admin_user == ""||admin_user==undefined){
         $window.location.href = "/a";
@@ -169,6 +169,15 @@ angular.module("adminApp").controller('mainController',['$scope','$http','$locat
             cancel:function(){
             }
         });
+    }
+
+    /**
+     * 点击更新
+     */
+    $scope.update_shop_click = function(a_user){
+        console.log("curr_data:"+curr_data);
+        curr_data.admin_user = a_user;
+        $location.path('updateShop');
     }
 
 }]);

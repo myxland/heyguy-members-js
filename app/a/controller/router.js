@@ -10,6 +10,10 @@ var app = angular.module('adminApp',['ui.router','oc.lazyLoad','ui.bootstrap']);
 
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 
+app.service("curr_data", [function(){
+    this.admin_user=null;
+}])
+
 var layer = layui.layer;
 
 function ResponseInterceptor($q,$window) {
@@ -143,10 +147,22 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/updateShop', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/updateShop',
+        templateUrl:'./view/updateShop.html',
+        controller:'updateShopController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'adminApp',
+                        files:['./controller/updateShopController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/main');
-
 
 
 }]);

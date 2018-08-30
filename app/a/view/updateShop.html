@@ -1,0 +1,65 @@
+<div class="wrap-container">
+	<form class="" style="width: 90%;padding-top: 20px;">
+		<div class="layui-form-item">
+			<label class="layui-form-label">更新商户</label>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">店铺名称：</label>
+			<div class="layui-input-block">
+				<input style="height: 35px;" ng-model="au.shop.shopName" ng-value="au.shop.shopName"  type="text" name="title" required lay-verify="required" placeholder="请输入店铺名称" autocomplete="off" class="layui-input">
+			</div>
+
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">店铺地址：</label>
+			<div class="layui-input-block">
+				<input style="height: 35px;" ng-model="au.shop.shopAddr" ng-value="au.shop.shopAddr" type="text"  name="title" required lay-verify="required" placeholder="请输入店铺地址" autocomplete="off" class="layui-input">
+			</div>
+
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">帐户名：</label>
+			<div class="layui-input-block">
+				<input style="height: 35px;" ng-model="au.userPhone" ng-value="au.userPhone" disabled type="text" name="title" required lay-verify="required" placeholder="请输入帐户名" autocomplete="off" class="layui-input">
+			</div>
+
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">是否连锁：</label>
+			<div class="layui-input-block">
+				<input style="vertical-align:middle; margin-top:0px; margin-bottom:0px;" ng-model="au.ifChain" type="radio"  name="chain" value="1" title="是">&nbsp;&nbsp;是&nbsp;&nbsp;
+				<input style="vertical-align:middle; margin-top:0px; margin-bottom:0px;" ng-model="au.ifChain"  type="radio"  name="chain" value="0" title="否">&nbsp;&nbsp;否
+			</div>
+
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label">老板姓名：</label>
+			<div class="layui-input-block">
+				<input style="height: 35px;" ng-model="au.shop.ownerName" ng-value="au.shop.ownerName" type="text" name="title" required lay-verify="required" placeholder="请输入老板姓名" autocomplete="off" class="layui-input">
+			</div>
+
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">老板电话：</label>
+			<div class="layui-input-block">
+				<input style="height: 35px;" ng-model="au.shop.ownerPhone" ng-value="au.shop.ownerPhone"  type="text" name="title" required lay-verify="required" placeholder="请输入老板电话" autocomplete="off" class="layui-input">
+			</div>
+
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">营业面积：</label>
+			<div class="layui-input-block">
+				<input style="height: 35px;" ng-model="au.shop.area" ng-value="au.shop.area" type="text" name="title" placeholder="请输入营业面积" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo" ng-click="doUpdateShop();">保存</button>
+				<button type="button" class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
+			</div>
+		</div>
+	</form>
+</div>

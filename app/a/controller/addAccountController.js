@@ -39,4 +39,11 @@ app.controller('addAccountController',['$scope','$http','$location','$window',fu
                 layui.layer.alert('系统繁忙、稍后再试');
             });
     }
+
+    /**
+     * 返回
+     */
+    $scope.goBack = function(){
+        $location.path("main");
+    }
 }]);

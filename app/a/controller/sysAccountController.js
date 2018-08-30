@@ -81,6 +81,11 @@ app.controller('sysAccountController',['$scope','$http','$location','$window',fu
         });
     }
 
+    /**
+     * 冻结、解冻
+     * @param id
+     * @param status
+     */
     $scope.changeStatus = function(id,status){
         var msg;
         if(status==1){
@@ -120,6 +125,7 @@ app.controller('sysAccountController',['$scope','$http','$location','$window',fu
             }
         });
     }
+
 
 
 

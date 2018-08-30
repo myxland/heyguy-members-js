@@ -1,5 +1,5 @@
 <div class="wrap-container">
-	<form class="layui-form" style="width: 90%;padding-top: 20px;">
+	<form class="" style="width: 90%;padding-top: 20px;">
 		<div class="layui-form-item">
 			<label class="layui-form-label">新增商户</label>
 		</div>
@@ -28,8 +28,8 @@
 		<div class="layui-form-item">
 			<label class="layui-form-label">是否连锁：</label>
 			<div class="layui-input-block">
-				<input ng-model="shop_chain" type="radio"  name="chain" value="1" title="是">
-				<input ng-model="shop_chain"  type="radio"  name="chain" value="0" title="否">
+				<input style="vertical-align:middle; margin-top:0px; margin-bottom:0px;" ng-model="shop_chain" type="radio"  name="chain" value="1" title="是">&nbsp;&nbsp;是&nbsp;&nbsp;
+				<input style="vertical-align:middle; margin-top:0px; margin-bottom:0px;" ng-model="shop_chain"  type="radio"  name="chain" value="0" title="否">&nbsp;&nbsp;否
 			</div>
 
 		</div>
@@ -58,7 +58,7 @@
 		<div class="layui-form-item">
 			<div class="layui-input-block">
 				<button class="layui-btn layui-btn-danger" lay-submit lay-filter="formDemo" ng-click="addShop();">立即提交</button>
-				<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				<button type="button" class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
 			</div>
 		</div>
 	</form>

@@ -82,5 +82,12 @@ app.controller('addShopController',['$scope','$http','$location','$window',funct
         $scope.shop_chain = "0";
     }
 
+    /**
+     * 返回
+     */
+    $scope.goBack = function(){
+        $location.path("main");
+    }
+
 
 }]);
