@@ -25,41 +25,38 @@
 							<th class="table-center">姓名</th>
 							<th class="table-center">手机号</th>
 							<th class="table-center">创建时间</th>
-							<th class="table-center">卡类型</th>
+							<th class="table-center">卡号</th>
+							<th class="table-center">卡状态</th>
 							<th class="table-center">卡余额</th>
 							<th class="table-center">会员状态</th>
 							<th class="table-center">操作</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="table-center">15845623659</td>
-							<td class="table-center">15845623659</td>
-							<td class="table-center">15845623659</td>
-							<td class="table-center">储值卡</td>
-							<td class="table-center">￥1500</td>
-							<td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-normal">正常</button></td>
+						<tr ng-repeat="a in userList">
+							<td class="table-center">{{a.person.realName}}</td>
+							<td class="table-center">{{a.userPhone}}</td>
+							<td class="table-center">{{a.createTime}}</td>
+							<td class="table-center">{{a.card.cardNo}}</td>
+							<td class="table-center">{{a.card.cardStatus}}</td>
+							<td class="table-center">{{a.balance}}</td>
+							<td class="table-center">{{a.status}}</td>
+							<!--
+							<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.status==1]">{{a.status | user_status1}}</button></td>
+							-->
 							<td class="table-center">
 								<div class="layui-inline">
-									<button class="layui-btn layui-btn-small layui-btn-normal">冻结</button>
-									<button class="layui-btn layui-btn-small layui-btn-danger">修改</button>
-									<button class="layui-btn layui-btn-small layui-btn-warm delBtn" data-id="1" data-url="del.html">删除</button>
+									<button ng-if="a.status==1" class="layui-btn layui-btn-small layui-btn-danger" ng-click="changeStatus(a.id,0);">冻结</button>
+									<button ng-if="a.status==0" class="layui-btn layui-btn-small layui-btn-normal" ng-click="changeStatus(a.id,1);">解冻</button>
+									<button class="layui-btn layui-btn-small layui-btn-defult" ng-click="updateUser(a.id);">修改</button>
+									<button class="layui-btn layui-btn-small layui-btn-warm delBtn" data-id="1" ng-click="deleteUser(a.id);">删除</button>
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td class="table-center">15845623659</td>
-							<td class="table-center">15845623659</td>
-							<td class="table-center">15845623659</td>
-							<td class="table-center">储值卡</td>
-							<td class="table-center">￥1500</td>
-							<td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-danger">冻结</button></td>
-							<td class="table-center">
-								<div class="layui-inline">
-									<button class="layui-btn layui-btn-small layui-btn-normal">冻结</button>
-									<button class="layui-btn layui-btn-small layui-btn-danger">修改</button>
-									<button class="layui-btn layui-btn-small layui-btn-warm delBtn" data-id="1" data-url="del.html">删除</button>
-								</div>
+							<td colspan="18">
+								<uib-pagination  items-per-page="prePage" ng-change="getOnePageUser()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="第一页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true"></uib-pagination>
+								共：{{totalItems}} 条
 							</td>
 						</tr>
 					</tbody>
