@@ -26,7 +26,7 @@
 							<th class="table-center">手机号</th>
 							<th class="table-center">创建时间</th>
 							<th class="table-center">卡号</th>
-							<th class="table-center">卡状态</th>
+							<th class="table-center">卡类型</th>
 							<th class="table-center">卡余额</th>
 							<th class="table-center">会员状态</th>
 							<th class="table-center">操作</th>
@@ -38,12 +38,9 @@
 							<td class="table-center">{{a.userPhone}}</td>
 							<td class="table-center">{{a.createTime}}</td>
 							<td class="table-center">{{a.card.cardNo}}</td>
-							<td class="table-center">{{a.card.cardStatus}}</td>
+							<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.card.cardType==1]">{{a.card.cardType | card_type}}</button></td>
 							<td class="table-center">{{a.balance}}</td>
-							<td class="table-center">{{a.status}}</td>
-							<!--
-							<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.status==1]">{{a.status | user_status1}}</button></td>
-							-->
+							<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.status==1]">{{a.status | user_status_shop}}</button></td>
 							<td class="table-center">
 								<div class="layui-inline">
 									<button ng-if="a.status==1" class="layui-btn layui-btn-small layui-btn-danger" ng-click="changeStatus(a.id,0);">冻结</button>

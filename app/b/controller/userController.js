@@ -66,7 +66,7 @@ app.controller('userController',['$scope','$http','$location','$window',function
             success:function(){
                 $http({
                     method:"POST",
-                    url:base_url+"/user/admin/delete",
+                    url:base_url+"/user/customer/delete",
                     data:{
                         id:id
                     },

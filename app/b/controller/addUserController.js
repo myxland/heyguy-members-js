@@ -5,26 +5,50 @@
 
 var app = angular.module("shopApp");
 
-app.controller('userController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
-
+app.controller('addUserController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
 
     /**
-     * 新增系统管理员
+     * 新增会员
      */
     $scope.addUser = function(){
-        var phone = $scope.phone;
-        if(phone==undefined||phone==''){
+        var realName = $scope.realName;
+        if(realName==undefined||realName==''){
             return;
         }
-        if(phone.length!=11){
+        var phoneNo = $scope.phoneNo;
+        if(phoneNo==undefined||phoneNo==''){
+            return;
+        }
+        if(phoneNo.length!=11){
             layui.layer.alert("请输入正确手机号");
             return;
         }
+        var cardNo = $scope.cardNo;
+        if(cardNo==undefined||cardNo==''){
+            return;
+        }
+        var cardType = $("input[name='cardType'][checked]").val();
+        var fee = $scope.fee;
+        if(fee==undefined||fee==''){
+            return;
+        }
+        var ifDiscount = "1";
+        if ($('#ifDiscount').is(":checked")) {
+            ifDiscount = "1"
+        }else{
+            ifDiscount = "0"
+        }
         $http({
             method:"POST",
-            url:base_url+"/user/admin/add",
+            url:base_url+"/user/customer/add",
             data:{
-                userPhone:phone
+                realName:realName,
+                phoneNo:phoneNo,
+                cardNo:cardNo,
+                cardType:cardType,
+                fee:fee,
+                ifDiscount:ifDiscount,
+                shopId:1
             },
             cache:false,
         }).success(function (data,status) {
@@ -34,9 +58,8 @@ app.controller('userController',['$scope','$http','$location','$window',function
             }else{
                 layui.layer.alert(data.msg);
             }
-        })
-            .error(function (response,status,header) {
+        }).error(function (response,status,header) {
                 layui.layer.alert('系统繁忙、稍后再试');
-            });
+        });
     }
 }]);

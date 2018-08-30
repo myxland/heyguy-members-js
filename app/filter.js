@@ -26,7 +26,18 @@ app.filter('user_status_shop',function(){
         return status_name;
     }
 });
-
+app.filter('card_type',function(){
+    return function(status){
+        var status_name = "";
+        if(status=="1"){
+            status_name = "储值卡";
+        }
+        if(status=="2"){
+            status_name = "折扣卡";
+        }
+        return status_name;
+    }
+});
 
 
 
