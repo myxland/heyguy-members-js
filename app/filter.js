@@ -2,7 +2,7 @@
  * Created by jacktong on 2017/8/4.
  */
 
-angular.module("adminApp").filter('user_status',function(){
+app.filter('user_status',function(){
     return function(status){
         var status_name = "";
         if(status=="1"){
@@ -14,7 +14,7 @@ angular.module("adminApp").filter('user_status',function(){
         return status_name;
     }
 });
-angular.module("shopApp").filter('user_status_shop',function(){
+app.filter('user_status_shop',function(){
     return function(status){
         var status_name = "";
         if(status=="1"){
