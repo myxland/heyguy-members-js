@@ -17,6 +17,7 @@
 					<col>
 					<col>
 					<col>
+					<col>
 					<col width="250">
 				</colgroup>
 				<thead>
@@ -24,6 +25,7 @@
 						<th class="table-center">姓名</th>
 						<th class="table-center">手机号</th>
 						<th class="table-center">充值时间</th>
+						<th class="table-center">卡号</th>
 						<th class="table-center">卡类型</th>
 						<th class="table-center">充值金额</th>
 						<th class="table-center">会员状态</th>
@@ -31,18 +33,14 @@
 				</thead>
 				<tbody>
 
-				<tr ng-repeat="a in rechargeList">
-					<td class="table-center">{{a.fee}}</td>
+				<tr ng-repeat="a in rechargeList|filter:{'userPhone':userPhone}">
+					<td class="table-center">{{a.user.person.realName}}</td>
 					<td class="table-center">{{a.userPhone}}</td>
 					<td class="table-center">{{a.createTime}}</td>
+					<td class="table-center">{{a.cardNo}}</td>
+					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.card.cardType==1]">{{a.user.card.cardType | card_type}}</button></td>
 					<td class="table-center">{{a.fee}}</td>
-					<td class="table-center">{{a.fee}}</td>
-					<td class="table-center">{{a.userPhone}}</td>
-					<!--
-					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.status==1]">{{a.status | user_status}}</button></td>
-					<td class="table-center">{{a.fee}}</td>
-					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.status==1]">{{a.status | user_status}}</button></td>
-					-->
+					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.status==1]">{{a.user.status | user_status_shop}}</button></td>
 				</tr>
 				<tr>
 					<td colspan="18">
@@ -52,18 +50,6 @@
 				</tr>
 				</tbody>
 			</table>
-			<div class="page-wrap">
-				<ul class="pagination">
-					<li class="disabled"><span>«</span></li>
-					<li class="active"><span>1</span></li>
-					<li>
-						<a href="#">2</a>
-					</li>
-					<li>
-						<a href="#">»</a>
-					</li>
-				</ul>
-			</div>
 		</div>
 	</div>
 </div>

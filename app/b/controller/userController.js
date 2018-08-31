@@ -66,7 +66,8 @@ app.controller('userController',['$scope','$http','$location','$window','curr_da
      * 删除账户
      */
     $scope.deleteUser = function(id){
-
+        //作废，不进行物理删除，只是更改user的状态
+        var status = -1;
         var layer = layui.layer;
         var dialog = layui.dialog;
 
@@ -75,9 +76,10 @@ app.controller('userController',['$scope','$http','$location','$window','curr_da
             success:function(){
                 $http({
                     method:"POST",
-                    url:base_url+"/user/customer/delete",
+                    url:base_url+"/user/customer/changeStatus",
                     data:{
-                        id:id
+                        id:id,
+                        status:status
                     },
                     cache:false,
                 }).success(function (data,status) {

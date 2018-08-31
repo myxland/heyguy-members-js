@@ -5,7 +5,7 @@
 
 var app = angular.module("shopApp");
 
-app.controller('addUserController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
+app.controller('addUserController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
 
     /**
      * 新增会员
@@ -48,7 +48,7 @@ app.controller('addUserController',['$scope','$http','$location','$window',funct
                 cardType:cardType,
                 fee:fee,
                 ifDiscount:ifDiscount,
-                shopId:1
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {
