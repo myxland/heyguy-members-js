@@ -25,13 +25,13 @@
 						<td class="table-center">{{a.name}}</td>
 						<td class="table-center">
 							<div class="layui-inline">
-								<button class="layui-btn layui-btn-small layui-btn-defult" ng-click="updateDiscount(a.id);">修改</button>
+								<button class="layui-btn layui-btn-small layui-btn-defult" ng-click="updateDiscount(a);">修改</button>
 								<button class="layui-btn layui-btn-small layui-btn-warm delBtn" ng-click="deleteDiscount(a.id);">删除</button>
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="18">
+						<td colspan="6">
 							<uib-pagination  items-per-page="prePage" ng-change="getOnePageDiscount()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="第一页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true"></uib-pagination>
 							共：{{totalItems}} 条
 						</td>

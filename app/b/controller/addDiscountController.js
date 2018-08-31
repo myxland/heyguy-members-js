@@ -5,8 +5,7 @@
 
 var app = angular.module("shopApp");
 
-app.controller('addDiscountController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
-
+app.controller('addDiscountController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
     /**
      * 新增优惠信息
      */
@@ -32,7 +31,8 @@ app.controller('addDiscountController',['$scope','$http','$location','$window',f
             data:{
                 name:name,
                 fullMoney:fullMoney,
-                addMoney:addMoney
+                addMoney:addMoney,
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {

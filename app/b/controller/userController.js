@@ -5,7 +5,7 @@
 
 var app = angular.module("shopApp");
 
-app.controller('userController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
+app.controller('userController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
 
     /**
      * 新增用户
@@ -18,10 +18,19 @@ app.controller('userController',['$scope','$http','$location','$window',function
     $scope.currentPage = 1;
     $scope.prePage = 10;
     /**
-     * 新增优惠按钮点击
+     * 新增会员
      */
-    $scope.addUserClick = function(){
+    $scope.addUser = function(){
         $location.path("addUser");
+    }
+
+    /**
+     * 会员修改
+     */
+    $scope.updateUser = function(user){
+        localStorage.setItem("userBean",JSON.stringify(user));
+        curr_data.userBean = user;
+        $location.path("updateUser");
     }
 
     /**
