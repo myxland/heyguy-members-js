@@ -39,7 +39,7 @@ app.controller('updateShopController',['$scope','$http','$location','$window','c
         var fd = new FormData();
         //fd.append("userPhone",shop_account);
         fd.append("shopName",shop_name);
-        //fd.append("ifChain",shop_chain);
+        fd.append("ifChain",shop_chain);
         fd.append("contanct",shop_owner_phone);
         fd.append("ownerName",shop_owner);
         fd.append("shopAddr",shop_addr);
