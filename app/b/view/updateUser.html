@@ -3,19 +3,19 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">姓名：</label>
 				<div class="layui-input-block">
-					<input type="text" name="title" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" ng-model="realName">
+					<input type="text" name="title" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" ng-model="userBean.realName" ng-value="userBean.realName">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">手机号：</label>
 				<div class="layui-input-block">
-					<input type="text" name="title" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="phoneNo">
+					<input type="text" name="title" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="userBean.phoneNo" ng-value="userBean.phoneNo">
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">卡号：</label>
 				<div class="layui-input-block">
-					<input type="text" name="title" required lay-verify="required" placeholder="请输入卡号" autocomplete="off" class="layui-input" ng-model="cardNo">
+					<input type="text" name="title" required lay-verify="required" placeholder="请输入卡号" autocomplete="off" class="layui-input" ng-model="userBean.cardNo" ng-value="userBean.cardNo" >
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -44,7 +44,7 @@
 			</div>
 			<div class="layui-form-item">
 				<div class="layui-input-block">
-					<button class="layui-btn layui-btn-danger" ng-click="addUser();">立即提交</button>
+					<button class="layui-btn layui-btn-danger" ng-click="updateUser();">立即提交</button>
 					<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 				</div>
 			</div>

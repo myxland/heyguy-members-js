@@ -5,7 +5,7 @@
 
 var app = angular.module("shopApp");
 
-app.controller('userController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
+app.controller('userController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
 
     /**
      * 新增用户
@@ -18,10 +18,19 @@ app.controller('userController',['$scope','$http','$location','$window',function
     $scope.currentPage = 1;
     $scope.prePage = 10;
     /**
-     * 新增优惠按钮点击
+     * 新增会员
      */
-    $scope.addUserClick = function(){
+    $scope.addUser = function(){
         $location.path("addUser");
+    }
+
+    /**
+     * 会员修改
+     */
+    $scope.updateUser = function(user){
+        localStorage.setItem("userBean",JSON.stringify(user));
+        curr_data.userBean = user;
+        $location.path("updateUser");
     }
 
     /**
@@ -57,7 +66,8 @@ app.controller('userController',['$scope','$http','$location','$window',function
      * 删除账户
      */
     $scope.deleteUser = function(id){
-
+        //作废，不进行物理删除，只是更改user的状态
+        var status = -1;
         var layer = layui.layer;
         var dialog = layui.dialog;
 
@@ -66,9 +76,10 @@ app.controller('userController',['$scope','$http','$location','$window',function
             success:function(){
                 $http({
                     method:"POST",
-                    url:base_url+"/user/admin/delete",
+                    url:base_url+"/user/customer/changeStatus",
                     data:{
-                        id:id
+                        id:id,
+                        status:status
                     },
                     cache:false,
                 }).success(function (data,status) {

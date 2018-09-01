@@ -5,40 +5,38 @@
 
 var app = angular.module("shopApp");
 
-app.controller('addDiscountController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
+app.controller('updateDiscountController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
+    $scope.discountBean = curr_data.discountBean;
     /**
-     * 新增优惠信息
+     * 优惠信息
      */
-    $scope.addDiscount = function(){
-        var name = $scope.name;
-        var fullMoney = $scope.fullMoney;
-        var addMoney = $scope.addMoney;
+    $scope.updateDiscount = function(){
+        var name = $scope.discountBean.name;
+        var fullMoney = $scope.discountBean.fullMoney;
+        var addMoney = $scope.discountBean.addMoney;
         if(name==undefined||name==''){
-            layui.layer.alert("请输入优惠名称");
             return;
         }
         if(fullMoney==undefined||fullMoney==''){
-            layui.layer.alert("请输入满足的金额");
             return;
         }
         if(addMoney==undefined||addMoney==''){
-            layui.layer.alert("请输入赠送的金额");
             return;
         }
         $http({
             method:"POST",
-            url:base_url+"/discount/add",
+            url:base_url+"/discount/update",
             data:{
+                id:$scope.discountBean.id,
                 name:name,
                 fullMoney:fullMoney,
-                addMoney:addMoney,
-                shopId:admin_user.shopId
+                addMoney:addMoney
             },
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                $scope.resetDiscount();
-                layui.layer.alert("添加成功");
+                layui.layer.alert("修改成功");
+                $location.path("discount");
             }else{
                 layui.layer.alert(data.msg);
             }

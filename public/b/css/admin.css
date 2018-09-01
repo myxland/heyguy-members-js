@@ -1208,7 +1208,7 @@
 /*默认面板*/
 .panel-default {
   border-color: #dddddd;
-  border-bottom:0!important;
+ 
 }
 .panel-default > .panel-header {
   border-color: #ddd;
@@ -1280,11 +1280,7 @@
 .panel-default .panel-header {
   border-color: transparent;
   background-color: #fff;
-  color: #ff8146;
-  font-size:14px;
-}
-.panel-default .panel-header span{
-  width: 4px;height: 15px;background-color: #ff8146;display: block;float: left;margin:3px 5px 0 0;
+  color: #555555;
 }
 .panel-header {
   border-bottom: solid 1px transparent;
@@ -1340,14 +1336,14 @@
   margin-bottom: 1px;
   padding-left: 10px;
   line-height: 75px;
-  color: #3c3b39;
+  color: #fff;
   font-size: 17px;
-  border-left: 4px solid #fff;
+  border-left: 4px solid #ff8244;
   cursor:pointer;
 }
 .layui-nav-tree .layui-nav-item p.active{
-  background-color: #ffede3;
-  border-left: 4px solid #ff8309;
+  background-color: #ff9764;
+  border-left: 4px solid #fff;
 }
 .layui-nav-no-bg .layui-nav-itemed > a,
 .layui-nav-no-bg .layui-nav-tree .layui-nav-title a,
@@ -1545,10 +1541,10 @@
   *display: inline;
   *zoom: 1;
   border: 1px solid #e2e2e2;
-  width: 28px;
+  width: 48px;
   height: 28px;
   line-height: 28px;
-  margin: 0 -1px 5px 0;
+  margin: 0 0 5px 0;
   background-color: #fff;
   color: #333;
   font-size: 12px;
@@ -1587,7 +1583,7 @@
 .main-layout-side {
   width: 200px;
   height: 100%;
-  background: #fff;
+  background: #ff8244;
   position: absolute;
   left: 0;
   top: 0;
@@ -1602,10 +1598,11 @@
 .main-layout-side .m-logo {
   width: 100%;
   height: 60px;
+  margin: 15px 0 25px 0;
   background: #ff8244 url(../images/logo.png) center center no-repeat;
 }
 .main-layout-side .layui-nav {
-  background: #fff;
+  background: #ff8244;
 }
 .main-layout-side .layui-nav .iconfont {
   padding-right: 10px;
@@ -1637,7 +1634,7 @@
 }
 .main-layout-side .layui-nav-tree .layui-nav-child dd.layui-this,
 .main-layout-side .layui-nav-tree .layui-this {
-  background-color: #fff;
+  background-color: #444c63;
 }
 .main-layout-side .layui-nav-tree .layui-nav-child .layui-this > a {
   background-color: #444c63;
@@ -1668,7 +1665,7 @@
 .main-layout-header {
   height: 60px;
   border-bottom: 1px solid #f0f0f0;
-  background: #ff8144;
+  background: #fff;
 }
 .main-layout-header a {
   text-decoration: none;
@@ -1692,9 +1689,9 @@
 .main-layout-header .layui-nav li {
   border-left: 1px solid #f2f3f5;
 }
-.layui-nav,.layui-nav a{color: #fff!important;}
+
 .main-layout-header .layui-nav .layui-nav-item > a:hover {
-  color: #fff;
+  color: #999;
 }
 .main-layout-header .layui-nav > .layui-this a {
   color: #00b5f9;
@@ -1961,6 +1958,7 @@
   }
 }
 .welcome-container {
+width: 100%;
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
@@ -1975,6 +1973,7 @@
 .welcome-left-container .data-show a {
   display: block;
   background: #fff;
+padding: 10px;
   border: 1px solid #ebeaea;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2005,7 +2004,7 @@
   background: #94e0e1;
 }
 .welcome-left-container .data-show .right-text-con {
-  padding:10px 0 0 110px;
+  padding-left: 78px;
 }
 .welcome-left-container .data-show p {
   margin: 0;
@@ -2035,6 +2034,9 @@
 .welcome-left-container .chart-panel {
   margin: 0px 15px 15px;
 }
+.welcome-left-container .server-panel {
+  margin: 15px;
+}
 .welcome-left-container .server-panel .panel-header {
   padding-bottom: 0;
 }
@@ -2047,6 +2049,13 @@
   line-height: 40px;
   padding-left: 15px;
   margin: 0;
+}
+.welcome-left-container .server-panel span {
+  height: 30px;
+  padding-top: 10px;
+  padding-left: 15px;
+  display: block;
+  background: #fafafa;
 }
 .welcome-edge {
   padding: 0 30px 15px 0;
@@ -2145,6 +2154,7 @@
     margin-left: 80px;
   }
 }
+
 .nav-icon1{width:45px;height:45px;background:url('../images/nav-icon1.png') no-repeat;display: block;float: left;margin:15px 10px 0 5px}
 .nav-icon2{width:45px;height:45px;background:url('../images/nav-icon2.png') no-repeat;display: block;float: left;margin:15px 10px 0 5px}
 .nav-icon3{width:45px;height:45px;background:url('../images/nav-icon3.png') no-repeat;display: block;float: left;margin:15px 10px 0 5px}

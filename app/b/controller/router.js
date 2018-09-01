@@ -5,10 +5,18 @@
 'use strict';
 
 var admin_user = JSON.parse(localStorage.getItem("shopUser"));
+var discountBean = JSON.parse(localStorage.getItem("discountBean"));
+var userBean = JSON.parse(localStorage.getItem("userBean"));
 
 var app = angular.module('shopApp',['ui.router','oc.lazyLoad','ui.bootstrap']);
 
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
+
+app.service("curr_data", [function(){
+    this.admin_user=null;
+    this.discountBean=null;
+    this.userBean=null;
+}])
 
 var layer = layui.layer;
 
@@ -130,6 +138,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/updateDiscount', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/updateDiscount',
+        templateUrl:'./view/updateDiscount.html',
+        controller:'updateDiscountController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/updateDiscountController.js']}
+                    )
+                }]
+        }
     }).state('/recharge', { //导航用的名字，如<a ui-sref="login">login</a>里的login
         url: '/recharge',
         templateUrl:'./view/recharge.html',
@@ -192,6 +213,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     return $ocLazyLoad.load({
                         name:'shopApp',
                         files:['./controller/addUserController.js']}
+                    )
+                }]
+        }
+    }).state('/updateUser', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/updateUser',
+        templateUrl:'./view/updateUser.html',
+        controller:'updateUserController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/updateUserController.js']}
                     )
                 }]
         }

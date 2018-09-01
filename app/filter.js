@@ -23,10 +23,24 @@ app.filter('user_status_shop',function(){
         if(status=="0"){
             status_name = "冻结";
         }
+        if(status=="-1"){
+            status_name = "作废";
+        }
         return status_name;
     }
 });
-
+app.filter('card_type',function(){
+    return function(status){
+        var status_name = "";
+        if(status=="1"){
+            status_name = "储值卡";
+        }
+        if(status=="2"){
+            status_name = "折扣卡";
+        }
+        return status_name;
+    }
+});
 
 
 

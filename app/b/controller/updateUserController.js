@@ -5,40 +5,41 @@
 
 var app = angular.module("shopApp");
 
-app.controller('addDiscountController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
+app.controller('updateUserController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
+    $scope.userBean = curr_data.userBean;
     /**
-     * 新增优惠信息
+     * 优惠信息
      */
-    $scope.addDiscount = function(){
-        var name = $scope.name;
-        var fullMoney = $scope.fullMoney;
-        var addMoney = $scope.addMoney;
+    $scope.updateUser = function(){
+        var name = $scope.userBean.name;
+        var fullMoney = $scope.userBean.fullMoney;
+        var addMoney = $scope.userBean.addMoney;
+        var name = $scope.userBean.name;
+        var fullMoney = $scope.userBean.fullMoney;
+        var addMoney = $scope.userBean.addMoney;
         if(name==undefined||name==''){
-            layui.layer.alert("请输入优惠名称");
             return;
         }
         if(fullMoney==undefined||fullMoney==''){
-            layui.layer.alert("请输入满足的金额");
             return;
         }
         if(addMoney==undefined||addMoney==''){
-            layui.layer.alert("请输入赠送的金额");
             return;
         }
         $http({
             method:"POST",
-            url:base_url+"/discount/add",
+            url:base_url+"/user/customer/update",
             data:{
+                id:$scope.discountBean.id,
                 name:name,
                 fullMoney:fullMoney,
-                addMoney:addMoney,
-                shopId:admin_user.shopId
+                addMoney:addMoney
             },
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                $scope.resetDiscount();
-                layui.layer.alert("添加成功");
+                layui.layer.alert("修改成功");
+                $location.path("user");
             }else{
                 layui.layer.alert(data.msg);
             }
