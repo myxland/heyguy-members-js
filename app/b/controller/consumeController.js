@@ -15,12 +15,12 @@ app.controller('consumeController',['$scope','$http','$location','$window',funct
     $scope.totalItems = 10;
     $scope.currentPage = 1;
     $scope.prePage = 10;
-    // /**
-    //  * 充值按钮点击
-    //  */
-    // $scope.addRechargeClick = function(){
-    //     $location.path("addRecharge");
-    // }
+    /**
+     * 增加消费
+     */
+    $scope.addConsume = function(){
+        $location.path("addConsume");
+    }
 
     /**
      * 查询一页消费信息

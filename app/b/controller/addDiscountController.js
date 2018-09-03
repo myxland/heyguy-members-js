@@ -39,6 +39,7 @@ app.controller('addDiscountController',['$scope','$http','$location','$window','
             if(data.code=='0'){
                 $scope.resetDiscount();
                 layui.layer.alert("添加成功");
+                $location.path("discount");
             }else{
                 layui.layer.alert(data.msg);
             }

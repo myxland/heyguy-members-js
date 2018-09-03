@@ -190,6 +190,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/addConsume', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addConsume',
+        templateUrl:'./view/addConsume.html',
+        controller:'addConsumeController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addConsumeController.js']}
+                    )
+                }]
+        }
     }).state('/user', { //导航用的名字，如<a ui-sref="login">login</a>里的login
         url: '/user',
         templateUrl:'./view/user.html',

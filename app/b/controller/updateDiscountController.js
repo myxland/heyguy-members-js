@@ -30,7 +30,8 @@ app.controller('updateDiscountController',['$scope','$http','$location','$window
                 id:$scope.discountBean.id,
                 name:name,
                 fullMoney:fullMoney,
-                addMoney:addMoney
+                addMoney:addMoney,
+                shopId:$scope.discountBean.shopId
             },
             cache:false,
         }).success(function (data,status) {
@@ -49,8 +50,9 @@ app.controller('updateDiscountController',['$scope','$http','$location','$window
      * 重置表单
      */
     $scope.resetDiscount = function(){
-        $scope.name = '';
-        $scope.fullMoney = '';
-        $scope.addMoney = '';
+        $scope.discountBean.name = '';
+        $scope.discountBean.fullMoney = '';
+        $scope.discountBean.addMoney = '';
     }
+
 }]);

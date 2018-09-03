@@ -33,6 +33,7 @@ app.controller('addRechargeController',['$scope','$http','$location','$window',f
             if(data.code=='0'){
                 $scope.resetRecharge();
                 layui.layer.alert("操作成功");
+                $location.path("recharge");
             }else{
                 layui.layer.alert(data.msg);
             }

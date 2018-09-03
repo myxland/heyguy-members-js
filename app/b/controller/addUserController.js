@@ -55,6 +55,7 @@ app.controller('addUserController',['$scope','$http','$location','$window','curr
             if(data.code=='0'){
                 $scope.phone = '';
                 layui.layer.alert("成功");
+                $location.path("user");
             }else{
                 layui.layer.alert(data.msg);
             }
@@ -62,4 +63,15 @@ app.controller('addUserController',['$scope','$http','$location','$window','curr
                 layui.layer.alert('系统繁忙、稍后再试');
         });
     }
+
+    /**
+     * 重置表单
+     */
+    $scope.resetUser = function(){
+        $scope.realName = '';
+        $scope.phoneNo = '';
+        $scope.cardNo = '';
+        $scope.fee = '';
+    }
+
 }]);
