@@ -50,12 +50,13 @@ body{padding-bottom:1.3rem;color: #3e3a39}
 .fr{float:right;}
 .rules-detail{font-size: .34rem;font-weight: bold;text-align: center;margin: .25rem}
 .rules-container{margin: .2rem;font-size: .28rem;line-height: .5rem}
-.personal-data{background-color: #fff;}
+.personal-data{background-color: #fff;padding-bottom: 5px;}
 .personal-data li{border-bottom: 1px solid #eee;font-size: .3rem;overflow: hidden;padding: .2rem}
 .personal-data .name{float: left;}
-.personal-data .value{float: right;}
-.personal-data input{text-align: right;border:1px solid #eee;height: .5rem;width: 3rem}
-.personal-data .button{height: .8rem;background-color: #ff6c29;color: #fff;margin: .3rem;border-radius: 30px;font-size: .34rem;text-align: center;line-height: .8rem}
+.personal-data .value{float: left;margin-left: .5rem}
+.personal-data input{text-align: left;border:1px solid #eee;height: .5rem;width: 5rem}
+.personal-data .button{height: .8rem;background-color: #ff6c29;color: #fff;margin: .3rem .2rem .3rem .7rem;width:6rem;border-radius: 30px;font-size: .34rem;text-align: center;line-height: .8rem;}
+.personal-data .check_button{height: .6rem;background-color: #ff6c29;color: #fff;border-radius: 30px;font-size: .2rem;text-align: center;width: 2rem;}
 .card-detail{background-color: #fff;text-align: center;}
 .card-title{font-size: .32rem;text-align: left;border-bottom: 1px solid #eee;height: .82rem}
 .card-title i{display: inline-block;float: left;width:.5rem;height: .5rem;background-size: .5rem .5rem;overflow: hidden;margin: .2rem}
