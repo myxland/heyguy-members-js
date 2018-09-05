@@ -4,12 +4,12 @@
 
 'use strict';
 
-angular.module("shopApp").controller('mainController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
+angular.module("shopApp").controller('mainController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data) {
 
     if(admin_user == ""||admin_user==undefined){
         $window.location.href = "/b";
     }
-
+    $scope.admin_user = admin_user;
 
     /**
      * 注销
