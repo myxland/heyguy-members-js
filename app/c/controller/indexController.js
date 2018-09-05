@@ -5,9 +5,7 @@
 
 var app = angular.module("personApp");
 
-app.controller('indexController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
-
-
-    alert("加载个人信息");
+app.controller('indexController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window,curr_data){
+    $scope.user = curr_data.user;
 
 }]);

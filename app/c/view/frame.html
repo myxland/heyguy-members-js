@@ -20,6 +20,7 @@
 <body class="body-bg">
 
 <div ui-view></div>
+<input type="hidden" id="code" value="<%=code%>"/>
 <footer class="footer">
     <ul>
         <li class="active">
@@ -47,5 +48,10 @@
 
 
 <script src="/c/controller/router.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function() {
+
+    });
+</script>
 
 </html>

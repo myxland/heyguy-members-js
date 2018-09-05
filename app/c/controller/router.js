@@ -6,12 +6,14 @@
 
 //var admin_user = JSON.parse(localStorage.getItem("adminUser"));
 
+var code = $("#code").val();
+
 var app = angular.module('personApp',['ui.router','oc.lazyLoad','ui.bootstrap']);
 
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 
 app.service("curr_data", [function(){
-    this.admin_user=null;
+    this.user=null;
 }])
 
 var layer = layui.layer;
@@ -34,10 +36,10 @@ function ResponseInterceptor($q,$window) {
             console.log(response);
             if(response.data=='1003'){
                 layer.alert('请登录');
-                $window.location.href="/a";
+                $window.location.href="/c";
             } else if(response.data=='1004'){
                 layer.alert('超时，请登录');
-                $window.location.href="/a";
+                $window.location.href="/c";
             } else{
                 return response;
             }
