@@ -88,7 +88,7 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
 
 }]);
 
-app.controller('loginShopController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
+app.controller('loginController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window) {
 
     $scope.login = function(){
         var username = $scope.username;
