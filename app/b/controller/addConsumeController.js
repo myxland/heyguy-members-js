@@ -21,7 +21,8 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             data:{
                 page:$scope.currentPage,
                 size:$scope.prePage,
-                userPhone:userPhone
+                userPhone:userPhone,
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {
@@ -54,7 +55,8 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             data:{
                 payFee:fee,
                 userPhone:$scope.userBean.userPhone,
-                cardNo:$scope.userBean.card.cardNo
+                cardNo:$scope.userBean.card.cardNo,
+                shopId:$scope.userBean.card.shopId
             },
             cache:false,
         }).success(function (data,status) {

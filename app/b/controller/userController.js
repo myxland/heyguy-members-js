@@ -42,7 +42,8 @@ app.controller('userController',['$scope','$http','$location','$window','curr_da
             url:base_url+"/user/customer/findAllUser",
             data:{
                 page:$scope.currentPage,
-                size:$scope.prePage
+                size:$scope.prePage,
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {

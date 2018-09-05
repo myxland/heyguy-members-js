@@ -31,7 +31,8 @@ app.controller('consumeController',['$scope','$http','$location','$window',funct
             url:base_url+"/consume/findAll",
             data:{
                 page:$scope.currentPage,
-                size:$scope.prePage
+                size:$scope.prePage,
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {

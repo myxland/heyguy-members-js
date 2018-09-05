@@ -37,7 +37,7 @@
 					<td class="table-center">{{a.user.person.realName}}</td>
 					<td class="table-center">{{a.userPhone}}</td>
 					<td class="table-center">{{a.createTime}}</td>
-					<td class="table-center">{{a.cardNo}}</td>
+					<td class="table-center">{{a.user.card.cardNo}}</td>
 					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.card.cardType==1]">{{a.user.card.cardType | card_type}}</button></td>
 					<td class="table-center">{{a.fee}}</td>
 					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.status==1]">{{a.user.status | user_status_shop}}</button></td>

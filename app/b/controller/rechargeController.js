@@ -30,7 +30,8 @@ app.controller('rechargeController',['$scope','$http','$location','$window',func
             url:base_url+"/recharge/findAll",
             data:{
                 page:$scope.currentPage,
-                size:$scope.prePage
+                size:$scope.prePage,
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {
@@ -49,32 +50,5 @@ app.controller('rechargeController',['$scope','$http','$location','$window',func
     }
 
     $scope.getOnePageRecharge();
-
-    // $scope.searchRecharge = function(){
-    //     var userPhone = $scope.userPhone;
-    //     if(userPhone!=undefined||userPhone!=''){
-    //         $http({
-    //             method:"POST",
-    //             url:base_url+"/recharge/findByUserPhone",
-    //             data:{
-    //                 page:$scope.currentPage,
-    //                 size:$scope.prePage,
-    //                 userPhone:userPhone
-    //             },
-    //             cache:false,
-    //         }).success(function (data,status) {
-    //             if(data.code=='0'){
-    //                 console.log(data.data);
-    //                 $scope.rechargeList = data.data.content;
-    //                 $scope.totalItems = data.data.totalElements;
-    //                 $scope.currentPage = data.data.number+1;
-    //             }else{
-    //                 layui.layer.alert(data.msg);
-    //             }
-    //         }).error(function (response,status,header) {
-    //             layui.layer.alert('系统繁忙、稍后再试');
-    //         });
-    //     }
-    // }
 
 }]);
