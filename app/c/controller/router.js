@@ -173,6 +173,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/recharge_list', {
+        url: '/recharge_list',
+        templateUrl:'./view/recharge_list.html',
+        controller:'rechargeController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'personApp',
+                        files:['./controller/rechargeController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/check');

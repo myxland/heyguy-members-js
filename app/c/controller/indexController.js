@@ -14,5 +14,26 @@ app.controller('indexController',['$scope','$http','$location','$window',functio
         $location.path('mycard');
     }
 
+    /**
+     * 充值记录
+     */
+    $scope.rechargeList = function () {
+        $location.path('recharge_list');
+    }
+
+    /**
+     * 消费记录
+     */
+    $scope.consumelist = function(){
+        $location.path('consume_list');
+    }
+
+    /**
+     * 积分列表
+     */
+    $scope.point = function(){
+        $location.path('point');
+    }
+
 
 }]);

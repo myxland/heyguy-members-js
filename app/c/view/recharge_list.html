@@ -1,0 +1,34 @@
+<section class="list">
+    <div class="rules">
+        <span class="fl">充值记录</span>
+    </div>
+</section>
+<section class="list">
+    <ul>
+        <li ng-repeat="rec in rec_list">
+            <div class="text">
+                <p class="card">{{rec.user.card.shop.shopName}}会员卡</p>
+                <p class="type">[充值]</p>
+                <p class="time">{{rec.paymentTime}}</p>
+            </div>
+            <p class="data">+{{rec.fee}}</p>
+        </li>
+    </ul>
+    <div class="no-more">已经没有更多了</div>
+</section>
+<footer class="footer">
+    <ul>
+        <li class="active">
+            <i class="icon icon-home1"></i>
+            <p>首页</p>
+        </li>
+        <li>
+            <i class="icon icon-pay"></i>
+            <p>我的会员卡</p>
+        </li>
+        <li>
+            <i class="icon icon-personal"></i>
+            <p>个人信息</p>
+        </li>
+    </ul>
+</footer>
