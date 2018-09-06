@@ -85,13 +85,26 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
      * 提交校验验证码
      */
     $scope.checkClick = function(){
-
+        var phone = $scope.phone_no;
+        if(phone==undefined||phone==''){
+            layer.msg('请输入正确手机号');
+            return;
+        }
         var check_code = $scope.check_code;
+        if(check_code==undefined||check_code==''){
+            layer.msg('请输入正确验证码');
+            return;
+        }
+        //测试使用
+        // $location.path('index');
+        // return;
+        //测试使用
+
         $http({
             method:"POST",
             url:base_url+"/base/sms/checkCode",
             data:{
-                phone:$scope.phone_no,
+                phone:phone,
                 code:check_code
             },
             cache:false,
@@ -123,6 +136,7 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
         }).success(function (data,status) {
             if(data.code=='0'){
                 curr_data.user = data.data;
+                login_user = data.data;
                 $location.path('index');
             }else{
                 layer.msg(data.msg);

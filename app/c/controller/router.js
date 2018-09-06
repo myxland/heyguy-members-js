@@ -4,7 +4,7 @@
 
 'use strict';
 
-//var admin_user = JSON.parse(localStorage.getItem("adminUser"));
+var login_user;
 
 var code = $("#code").val();
 
@@ -13,7 +13,8 @@ var app = angular.module('personApp',['ui.router','oc.lazyLoad','ui.bootstrap'])
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 
 app.service("curr_data", [function(){
-    this.user=null;
+    this.user = null;
+    this.card = null;
 }])
 
 var layer = layui.layer;
@@ -62,9 +63,9 @@ function ResponseInterceptor($q,$window) {
 
 
 app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($stateProvider,$httpProvider,$urlRouterProvider){
-    // if(admin_user != null&&admin_user!=undefined){
-    //     $httpProvider.defaults.headers.common = { 'key':admin_user.loginKey,'id':admin_user.id,'user_type':9};
-    // }
+    if(login_user != null&&login_user!=undefined){
+        $httpProvider.defaults.headers.common = { 'key':user.loginKey,'id':user.id,'user_type':1};
+    }
 
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -130,6 +131,45 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     return $ocLazyLoad.load({
                         name:'personApp',
                         files:['./controller/indexController.js']}
+                    )
+                }]
+        }
+    }).state('/mycard', {
+        url: '/mycard',
+        templateUrl:'./view/cardList.html',
+        controller:'cardListController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'personApp',
+                        files:['./controller/cardListController.js']}
+                    )
+                }]
+        }
+    }).state('/card_detail', {
+        url: '/card_detail',
+        templateUrl:'./view/card_detail.html',
+        controller:'cardDetailController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'personApp',
+                        files:['./controller/cardDetailController.js']}
+                    )
+                }]
+        }
+    }).state('/person_info', {
+        url: '/person_info',
+        templateUrl:'./view/person_info.html',
+        controller:'personInfoController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'personApp',
+                        files:['./controller/personInfoController.js']}
                     )
                 }]
         }

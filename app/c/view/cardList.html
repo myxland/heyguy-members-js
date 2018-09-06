@@ -1,0 +1,34 @@
+<section class="list">
+    <div class="rules">
+        <span class="fl">会员卡列表</span>
+    </div>
+</section>
+<section>
+    <ul class="mycard">
+        <li ng-repeat="card in user.card_list" ng-click="getCardDetail(card.id);">
+            <img src="/c/images/mycard.png" />
+            <div>
+                <p>{{card.shop.shopName}}</p>
+                <!--<p class="type1">卡号：</p>-->
+                <p class="type2">卡号：{{card.cardNo}}</p>
+            </div>
+        </li>
+    </ul>
+    <div class="no-more">已经没有更多了</div>
+</section>
+<footer class="footer">
+    <ul>
+        <li>
+            <i class="icon icon-home1"></i>
+            <p>首页</p>
+        </li>
+        <li class="active">
+            <i class="icon icon-pay"></i>
+            <p>我的会员卡</p>
+        </li>
+        <li>
+            <i class="icon icon-personal"></i>
+            <p>个人信息</p>
+        </li>
+    </ul>
+</footer>

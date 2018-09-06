@@ -1,0 +1,56 @@
+<section class="list">
+    <div class="rules">
+        <span class="fl">聚巷客栈会员卡--{{card.shop.shopName}}</span>
+    </div>
+    <div class="card-detail">
+        <img src="{{card.qrCode}}" width="80%"/><br>
+        <img src="{{card.barCode}}" width="80%"/>
+    </div>
+
+
+</section>
+<section class="detail" style="margin-top: .3rem">
+    <h2 class="card-title">
+        <i class="icon-card"></i>
+        <span>会员卡详情</span>
+    </h2>
+    <table class="member">
+        <tr>
+            <td align="right" class="left">店铺名称：</td>
+            <td align="left">{{card.shop.shopName}}</td>
+        </tr>
+        <tr>
+            <td align="right" class="left">卡号：</td>
+            <td align="left">{{card.cardNo}}</td>
+        </tr>
+        <tr>
+            <td align="right" class="left">余额：</td>
+            <td align="left">{{card.balance}}</td>
+        </tr>
+        <tr>
+            <td align="right" class="left">指纹支付开通：</td>
+            <td align="left">未开通</td>
+        </tr>
+        <tr>
+            <td align="right" class="left">人脸支付开通：</td>
+            <td align="left">未开通</td>
+        </tr>
+    </table>
+    <input type="button" class="button" ng-click="recharge();" value="充值"/>
+</section>
+footer class="footer">
+<ul>
+    <li>
+        <i class="icon icon-home1"></i>
+        <p>首页</p>
+    </li>
+    <li class="active">
+        <i class="icon icon-pay"></i>
+        <p>我的会员卡</p>
+    </li>
+    <li>
+        <i class="icon icon-personal"></i>
+        <p>个人信息</p>
+    </li>
+</ul>
+</footer>
