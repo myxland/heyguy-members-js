@@ -71,4 +71,83 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             });
     }
 
+    var wait=60;
+    $scope.sendCode = function(){
+        var phone_no = $scope.userPhone;
+        if(phone_no==undefined||phone_no==''||phone_no.length!=11){
+            layer.msg('请输入正确手机号');
+            return;
+        }
+
+        // $scope.time();
+
+        $http({
+            method:"POST",
+            url:base_url+"/base/sms/sendCheckCode",
+            data:{
+                phone:phone_no
+            },
+            cache:false,
+        }).success(function (data,status) {
+            if(data.code=='0'){
+                layer.msg("发送成功");
+            }else{
+                layer.msg(data.msg);
+            }
+        }).error(function (response,status,header) {
+            layer.msg('系统繁忙、稍后再试');
+        });
+    }
+
+    /**
+     * 验证码按钮倒计时
+     */
+    $scope.time = function(){
+        var o = $("#send_btn");
+        if (wait == 0) {
+            o.attr('disabled','didsabled');
+            o.val('获取验证码');
+            wait = 60;
+        } else {
+            o.attr('disabled','didsabled');
+            o.val("重新发送(" + wait + ")");
+            wait--;
+            setTimeout(function() {
+                $scope.time();
+            },
+            1000)
+        }
+    }
+
+    /**
+     * 提交校验验证码
+     */
+    $scope.checkClick = function(){
+        var userPhone = $scope.userPhone;
+        if(userPhone==undefined||userPhone==''){
+            return;
+        }
+        var checkCode = $scope.checkCode;
+        if(checkCode==undefined||checkCode==''){
+            layui.layer.alert("请输入验证码");
+            return;
+        }
+        $http({
+            method:"POST",
+            url:base_url+"/base/sms/checkCode",
+            data:{
+                phone:userPhone,
+                code:checkCode
+            },
+            cache:false,
+        }).success(function (data,status) {
+            if(data.code=='0'){
+                $scope.addConsume();
+            }else{
+                layer.msg(data.msg);
+            }
+        }).error(function (response,status,header) {
+            layer.msg('系统繁忙、稍后再试');
+        });
+    }
 }]);

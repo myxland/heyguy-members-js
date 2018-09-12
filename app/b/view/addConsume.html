@@ -60,9 +60,16 @@
 							<input style="height: 35px;" type="text" name="title" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
 						</div>
 					</div>
+				    <div class="layui-form-item">
+						<label class="layui-form-label">验证码：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" type="text" name="title" placeholder="请输入验证码" autocomplete="off" class="layui-input" ng-model="checkCode">
+						</div>
+					</div>
 					<div class="layui-form-item">
 						<div class="layui-input-block">
-							<button class="layui-btn layui-btn-danger" ng-click="addConsume();">结账</button>
+							<button id="send_btn" class="layui-btn layui-btn-danger" ng-click="sendCode();">获取验证码</button>
+							<button class="layui-btn layui-btn-danger" ng-click="checkClick();">结账</button>
 							<button type="reset" class="layui-btn layui-btn-primary" >重置</button>
 						</div>
 					</div>
