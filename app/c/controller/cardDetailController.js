@@ -12,7 +12,7 @@ app.controller('cardListController',['$scope','$http','$location','$window',func
      * 充值
      */
     $scope.recharge = function(){
-
+        $location.path('charge');
     }
 
 

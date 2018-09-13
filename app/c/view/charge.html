@@ -1,0 +1,22 @@
+<section class="list">
+    <div class="rules">
+        <span class="fl">充值</span>
+    </div>
+</section>
+<section class="personal-data">
+    <ul>
+        <li>
+            <p class="name">店铺</p>
+            <p class="value">{{card.shop.shopName}}</p>
+        </li>
+        <li>
+            <p class="name">卡号</p>
+            <p class="value">{{card.cardNo}}</p>
+        </li>
+        <li>
+            <p class="name">金额</p>
+            <p class="value"><input type="text" value="" ng-model="money"/></p>
+        </li>
+    </ul>
+    <input type="button" class="button" ng-click="doCharge();" value="充值"/>
+</section>

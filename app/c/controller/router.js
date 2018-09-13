@@ -15,6 +15,7 @@ app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 app.service("curr_data", [function(){
     this.user = null;
     this.card = null;
+    this.openid = "";
 }])
 
 var layer = layui.layer;
@@ -183,6 +184,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     return $ocLazyLoad.load({
                         name:'personApp',
                         files:['./controller/rechargeController.js']}
+                    )
+                }]
+        }
+    }).state('/charge', {
+        url: '/charge',
+        templateUrl:'./view/charge.html',
+        controller:'chargeontroller',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'personApp',
+                        files:['./controller/chargeController.js']}
                     )
                 }]
         }
