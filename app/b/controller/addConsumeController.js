@@ -9,7 +9,6 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
     /**
      * 新增消费信息
      */
-
     $scope.getConsumeByPhone = function(){
         var userPhone = $scope.userPhone;
         if(userPhone==undefined||userPhone==''){
@@ -29,8 +28,6 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             if(data.code=='0'){
                 console.log(data.data);
                 $scope.userBean = data.data;
-                // $scope.totalItems = data.data.totalElements;
-                // $scope.currentPage = data.data.number+1;
             }else{
                 layui.layer.alert(data.msg);
             }
@@ -123,6 +120,15 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
      * 提交校验验证码
      */
     $scope.checkClick = function(){
+        var fee = $scope.fee;
+        if(fee==undefined||fee==''){
+            layui.layer.alert("请输入消费金额");
+            return;
+        }
+        if(fee>$scope.userBean.card.balance){
+            layui.layer.alert("余额不足");
+            return;
+        }
         var userPhone = $scope.userPhone;
         if(userPhone==undefined||userPhone==''){
             return;

@@ -16,66 +16,64 @@
 	<body>
 		<div class="wrap-container">
 			<form class="layui-form" style="width: 90%;padding: 20px 0 0 20px;">
-					<div class="layui-form-item">
-							<div class="layui-inline">
-								<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="userPhone">
-							</div>
-							<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getConsumeByPhone();">搜索</button>
-					</div>
-					<ul class="layui-tab-title">
-							<li class="layui-this">会员信息</li>
-					    </ul>
-					<div class="layui-form-item pt15">
-						<label class="layui-form-label">姓名：</label>
-						<div class="pt15">
-							{{userBean.person.realName}}
+				<div class="layui-form-item">
+						<div class="layui-inline">
+							<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="userPhone">
 						</div>
-
+						<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getConsumeByPhone();">搜索</button>
+				</div>
+				<ul class="layui-tab-title">
+						<li class="layui-this">会员信息</li>
+					</ul>
+				<div class="layui-form-item pt15">
+					<label class="layui-form-label">姓名：</label>
+					<div class="pt15">
+						{{userBean.person.realName}}
 					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">手机号：</label>
-						<div class="pt15">
-							{{userBean.userPhone}}
-						</div>
-
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">手机号：</label>
+					<div class="pt15">
+						{{userBean.userPhone}}
 					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">卡类型：</label>
-						<div class="pt15">
-							<span ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[userBean.card.cardType==1]">{{userBean.card.cardType | card_type}}</span>
-						</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">卡类型：</label>
+					<div class="pt15">
+						<span ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[userBean.card.cardType==1]">{{userBean.card.cardType | card_type}}</span>
 					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">余额：</label>
-						<div class="pt15">{{userBean.card.balance}}</div>
-					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">会员状态：</label>
-						<!--<div class="pt15"><span class="layui-btn layui-btn-mini layui-btn-normal">正常</span></div>-->
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">余额：</label>
+					<div class="pt15">{{userBean.card.balance}}</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">会员状态：</label>
+					<div class="pt15">
 						<span ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[userBean.status==1]">{{userBean.status | user_status_shop}}</span>
 					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">消费金额：</label>
-                        <div class="layui-input-block">
-							<input style="height: 35px;" type="text" name="title" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
-						</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">消费金额：</label>
+					<div class="layui-input-block">
+						<input style="height: 35px;" type="text" name="title" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
 					</div>
-				    <div class="layui-form-item">
-						<label class="layui-form-label">验证码：</label>
-						<div class="layui-input-block">
-							<input style="height: 35px;" type="text" name="title" placeholder="请输入验证码" autocomplete="off" class="layui-input" ng-model="checkCode">
-						</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">验证码：</label>
+					<div class="layui-input-block">
+						<input style="height: 35px;" type="text" name="title" placeholder="请输入验证码" autocomplete="off" class="layui-input" ng-model="checkCode">
 					</div>
-					<div class="layui-form-item">
-						<div class="layui-input-block">
-							<button id="send_btn" class="layui-btn layui-btn-danger" ng-click="sendCode();">获取验证码</button>
-							<button class="layui-btn layui-btn-danger" ng-click="checkClick();">结账</button>
-							<button type="reset" class="layui-btn layui-btn-primary" >重置</button>
-						</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button id="send_btn" class="layui-btn layui-btn-danger" ng-click="sendCode();">获取验证码</button>
+						<button class="layui-btn layui-btn-danger" ng-click="checkClick();">结账</button>
+						<button type="reset" class="layui-btn layui-btn-primary" >重置</button>
 					</div>
-				</form>
+				</div>
+			</form>
 		</div>
 		<script src="../static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 	</body>
-
 </html>

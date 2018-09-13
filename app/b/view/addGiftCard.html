@@ -1,0 +1,22 @@
+<div class="wrap-container">
+	<form class="layui-form" style="width: 90%;padding-top: 20px;">
+			<div class="layui-form-item">
+				<label class="layui-form-label">卡号：</label>
+				<div class="layui-input-block">
+					<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入卡号" autocomplete="off" class="layui-input" ng-model="cardNo">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">描述：</label>
+				<div class="layui-input-block">
+					<input style="height: 35px;" type="text" name="title"  placeholder="请输入描述信息" autocomplete="off" class="layui-input" ng-model="remark">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-danger" ng-click="add();">立即提交</button>
+					<button class="layui-btn layui-btn-primary" ng-click="reset();">重置</button>
+				</div>
+			</div>
+		</form>
+</div>

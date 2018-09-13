@@ -242,6 +242,58 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/giftCard', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/giftCard',
+        templateUrl:'./view/giftCard.html',
+        controller:'giftCardController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/giftCardController.js']}
+                    )
+                }]
+        }
+    }).state('/addGiftCard', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addGiftCard',
+        templateUrl:'./view/addGiftCard.html',
+        controller:'addGiftCardController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addGiftCardController.js']}
+                    )
+                }]
+        }
+    }).state('/giftCardConvert', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/giftCardConvert',
+        templateUrl:'./view/giftCardConvert.html',
+        controller:'giftCardConvertController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/giftCardConvertController.js']}
+                    )
+                }]
+        }
+    }).state('/addGiftCardConvert', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/addGiftCardConvert',
+        templateUrl:'./view/addGiftCardConvert.html',
+        controller:'addGiftCardConvertController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addGiftCardConvertController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/main');

@@ -41,6 +41,18 @@ app.filter('card_type',function(){
         return status_name;
     }
 });
+app.filter('card_status',function(){
+    return function(status){
+        var status_name = "";
+        if(status=="0"){
+            status_name = "未使用";
+        }
+        if(status=="1"){
+            status_name = "已使用";
+        }
+        return status_name;
+    }
+});
 
 
 
