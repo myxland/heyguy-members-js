@@ -5,7 +5,7 @@
 
 var app = angular.module("shopApp");
 
-app.controller('addRechargeController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
+app.controller('addRechargeController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
 
     /**
      * 新增系统管理员
@@ -27,6 +27,7 @@ app.controller('addRechargeController',['$scope','$http','$location','$window',f
             data:{
                 cardNo:cardNo,
                 fee:fee,
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {
