@@ -2,12 +2,12 @@
     <div class="card-warp"><img src="/c/images/top-card.png" /></div>
     <div class="head">
         <img src="/c/images/head.jpg" />
-        <p>Jack</p>
+        <p>{{user.person.nickname}}</p>
     </div>
     <ul class="card-list">
         <li style="border-right: 1px solid #f0f0f0">
             <i class="icon icon-card"></i>会员卡</br>
-            <p>{{user.card_list.size}}</p>
+            <p>{{user.card_list.length}}</p>
         </li>
         <li>
             <i class="icon icon-integration"></i>积分</br>

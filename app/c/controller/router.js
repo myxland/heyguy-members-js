@@ -3,8 +3,8 @@
  */
 
 'use strict';
-
-var login_user;
+var temp_user = localStorage.getItem('login_user');
+var login_user = JSON.parse(temp_user);
 
 var code = $("#code").val();
 
@@ -65,7 +65,7 @@ function ResponseInterceptor($q,$window) {
 
 app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($stateProvider,$httpProvider,$urlRouterProvider){
     if(login_user != null&&login_user!=undefined){
-        $httpProvider.defaults.headers.common = { 'key':user.loginKey,'id':user.id,'user_type':1};
+        $httpProvider.defaults.headers.common = { 'key':login_user.loginKey,'id':login_user.id,'user_type':1};
     }
 
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';

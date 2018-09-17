@@ -7,6 +7,9 @@ var app = angular.module("personApp");
 
 app.controller('checkController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window,curr_data){
 
+    if(login_user!=null&&login_user!=undefined&&login_user!='undefined'){
+        $location.path('index');
+    }
     /**
      * 根据code获取access_token,openid
      */
@@ -68,7 +71,7 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
     $scope.time = function(){
         var o = $("#send_btn");
         if (wait == 0) {
-            o.attr('disabled','didsabled');
+            o.removeAttr('disabled');
             o.val('获取验证码');
             wait = 60;
         } else {
@@ -131,13 +134,16 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
             data:{
                 phone_no:$scope.phone_no,
                 openid:$scope.openid,
-                access_token:$scope.access_token
+                access_token:$scope.access_token,
+                refresh_token:$scope.refresh_token,
+                acc_code:code
             },
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                curr_data.user = data.data;
+                //curr_data.user = data.data;
                 login_user = data.data;
+                localStorage.setItem('login_user',JSON.stringify(data.data));
                 $location.path('index');
             }else{
                 layer.msg(data.msg);
