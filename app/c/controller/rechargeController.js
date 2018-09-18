@@ -31,5 +31,26 @@ app.controller('rechargeController',['$scope','$http','$location','$window',func
 
     $scope.recharge_list();
 
+    /**
+     * 点击我的会员卡
+     */
+    $scope.getCard = function(){
+        $location.path('mycard');
+    }
+
+    /**
+     * 个人信息
+     */
+    $scope.person_info = function(){
+        $location.path('person_info');
+    }
+
+    /**
+     * 首页
+     */
+    $scope.go_index = function(){
+        $location.path('index');
+    }
+
 
 }]);

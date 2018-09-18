@@ -58,6 +58,7 @@ body{padding-bottom:1.3rem;color: #3e3a39}
 .personal-data .button{height: .8rem;background-color: #ff6c29;color: #fff;margin: .3rem .2rem .3rem .7rem;width:6rem;border-radius: 30px;font-size: .34rem;text-align: center;line-height: .8rem;}
 .personal-data .check_button{height: .6rem;background-color: #ff6c29;color: #fff;border-radius: 30px;font-size: .2rem;text-align: center;width: 2rem;}
 .card-detail{background-color: #fff;text-align: center;}
+.card-detail .button{height: .8rem;background-color: #ff6c29;color: #fff;margin: .3rem .2rem .3rem .7rem;width:6rem;border-radius: 30px;font-size: .34rem;text-align: center;line-height: .8rem;}
 .card-title{font-size: .32rem;text-align: left;border-bottom: 1px solid #eee;height: .82rem}
 .card-title i{display: inline-block;float: left;width:.5rem;height: .5rem;background-size: .5rem .5rem;overflow: hidden;margin: .2rem}
 .card-title span{display: inline-block;margin-top: .2rem;}
