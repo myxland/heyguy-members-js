@@ -30,7 +30,8 @@ app.controller('discountController',['$scope','$http','$location','$window','cur
             url:base_url+"/discount/findAll",
             data:{
                 page:$scope.currentPage,
-                size:$scope.prePage
+                size:$scope.prePage,
+                shopId:admin_user.shopId
             },
             cache:false,
         }).success(function (data,status) {
