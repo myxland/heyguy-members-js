@@ -3,12 +3,13 @@
  */
 'use strict';
 
-var app = angular.module("personApp");
+var app = angular.module("checkApp");
 
 app.controller('checkController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window,curr_data){
 
     if(login_user!=null&&login_user!=undefined&&login_user!='undefined'){
-        $location.path('index');
+        //$location.path('index');
+        $window.location.href = "/c/frame";
     }
     /**
      * 根据code获取access_token,openid
@@ -141,10 +142,10 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                //curr_data.user = data.data;
                 login_user = data.data;
                 localStorage.setItem('login_user',JSON.stringify(data.data));
-                $location.path('index');
+                //$location.path('index');
+                $window.location.href = "/c/frame";
             }else{
                 layer.msg(data.msg);
             }

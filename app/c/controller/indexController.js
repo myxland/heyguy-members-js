@@ -35,5 +35,12 @@ app.controller('indexController',['$scope','$http','$location','$window',functio
         $location.path('point');
     }
 
+    /**
+     * 个人信息
+     */
+    $scope.person_info = function(){
+        $location.path('person_info');
+    }
+
 
 }]);

@@ -6,13 +6,15 @@
 var temp_user = localStorage.getItem('login_user');
 var login_user = JSON.parse(temp_user);
 
-var app = angular.module('personApp',['ui.router','oc.lazyLoad','ui.bootstrap']);
+var code = $("#code").val();
+
+var app = angular.module('checkApp',['ui.router','oc.lazyLoad','ui.bootstrap']);
 
 app.factory('ResponseInterceptor', ['$q','$window', ResponseInterceptor]);
 
 app.service("curr_data", [function(){
-    this.user;
-    this.card;
+    this.user = null;
+    this.card = null;
     this.openid = "";
 }])
 
@@ -64,9 +66,6 @@ function ResponseInterceptor($q,$window) {
 
 
 app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($stateProvider,$httpProvider,$urlRouterProvider){
-    if(login_user != null&&login_user!=undefined){
-        $httpProvider.defaults.headers.common = { 'key':login_user.loginKey,'id':login_user.id,'user_type':1};
-    }
 
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -109,87 +108,21 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
             : data;
     }];
 
-    $stateProvider.state('/index', {
-        url: '/index',
-        templateUrl:'./view/index.html',
-        controller:'indexController',
+    $stateProvider.state('/check', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/check',
+        templateUrl:'./view/check.html',
+        controller:'checkController',
         resolve: {
             deps: ['$ocLazyLoad',
                 function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name:'personApp',
-                        files:['./controller/indexController.js']}
-                    )
-                }]
-        }
-    }).state('/mycard', {
-        url: '/mycard',
-        templateUrl:'./view/cardList.html',
-        controller:'cardListController',
-        resolve: {
-            deps: ['$ocLazyLoad',
-                function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name:'personApp',
-                        files:['./controller/cardListController.js']}
-                    )
-                }]
-        }
-    }).state('/card_detail', {
-        url: '/card_detail',
-        templateUrl:'./view/card_detail.html',
-        controller:'cardDetailController',
-        resolve: {
-            deps: ['$ocLazyLoad',
-                function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name:'personApp',
-                        files:['./controller/cardDetailController.js']}
-                    )
-                }]
-        }
-    }).state('/person_info', {
-        url: '/person_info',
-        templateUrl:'./view/person_info.html',
-        controller:'personInfoController',
-        resolve: {
-            deps: ['$ocLazyLoad',
-                function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name:'personApp',
-                        files:['./controller/personInfoController.js']}
-                    )
-                }]
-        }
-    }).state('/recharge_list', {
-        url: '/recharge_list',
-        templateUrl:'./view/recharge_list.html',
-        controller:'rechargeController',
-        resolve: {
-            deps: ['$ocLazyLoad',
-                function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name:'personApp',
-                        files:['./controller/rechargeController.js']}
-                    )
-                }]
-        }
-    }).state('/charge', {
-        url: '/charge',
-        templateUrl:'./view/charge.html',
-        controller:'chargeController',
-        resolve: {
-            deps: ['$ocLazyLoad',
-                function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name:'personApp',
-                        files:['./controller/chargeController.js']}
+                        files:['./controller/checkController.js']}
                     )
                 }]
         }
     });
-
-    $urlRouterProvider.otherwise('/index');
+    $urlRouterProvider.otherwise('/check');
 
 
 }]);

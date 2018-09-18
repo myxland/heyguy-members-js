@@ -5,8 +5,8 @@
 
 var app = angular.module("personApp");
 
-app.controller('cardListController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window,curr_data){
-    $scope.user = curr_data.user;
+app.controller('cardListController',['$scope','$http','$location','$window','$rootScope',function ($scope,$http,$location,$window,$rootScope){
+    $scope.user = login_user;
 
     /**
      * 查询会员卡详细
@@ -22,7 +22,7 @@ app.controller('cardListController',['$scope','$http','$location','$window',func
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                curr_data.card = data.data;
+                localStorage.setItem('card_info',JSON.stringify(data.data));
                 $location.path('card_detail');
             }else{
                 layer.msg(data.msg);
@@ -31,6 +31,20 @@ app.controller('cardListController',['$scope','$http','$location','$window',func
             .error(function (response,status,header) {
                 layer.msg('系统繁忙、稍后再试');
             });
+    }
+
+    /**
+     * 个人信息
+     */
+    $scope.person_info = function(){
+        $location.path('person_info');
+    }
+
+    /**
+     * 首页
+     */
+    $scope.go_index = function(){
+        $location.path('index');
     }
 
 }]);

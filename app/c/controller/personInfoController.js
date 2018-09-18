@@ -13,7 +13,7 @@ app.controller('personInfoController',['$scope','$http','$location','$window',fu
     $scope.findUser = function(){
             $http({
                 method:"POST",
-                url:base_url+"/customer/findOneById",
+                url:base_url+"/user/customer/findOneById",
                 data:{
                     userId:login_user.id
                 },
@@ -31,5 +31,19 @@ app.controller('personInfoController',['$scope','$http','$location','$window',fu
         }
 
     $scope.findUser();
+
+    /**
+     * 点击我的会员卡
+     */
+    $scope.getCard = function(){
+        $location.path('mycard');
+    }
+
+    /**
+     * 首页
+     */
+    $scope.go_index = function(){
+        $location.path('index');
+    }
 
 }]);

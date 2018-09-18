@@ -28,29 +28,29 @@
             <td align="left">{{card.balance}}</td>
         </tr>
         <tr>
-            <td align="right" class="left">指纹支付开通：</td>
+            <td align="right" class="left">指纹支付：</td>
             <td align="left">未开通</td>
         </tr>
         <tr>
-            <td align="right" class="left">人脸支付开通：</td>
+            <td align="right" class="left">人脸支付：</td>
             <td align="left">未开通</td>
         </tr>
     </table>
-    <input type="button" class="button" ng-click="recharge();" value="充值"/>
+    <input type="button" class="check_button" ng-click="recharge();" value="充值"/>
 </section>
-footer class="footer">
-<ul>
-    <li>
-        <i class="icon icon-home1"></i>
-        <p>首页</p>
-    </li>
-    <li class="active">
-        <i class="icon icon-pay"></i>
-        <p>我的会员卡</p>
-    </li>
-    <li>
-        <i class="icon icon-personal"></i>
-        <p>个人信息</p>
-    </li>
-</ul>
+<footer class="footer">
+    <ul>
+        <li ng-click="go_index();">
+            <i class="icon icon-home"></i>
+            <p>首页</p>
+        </li>
+        <li class="active" ng-click="getCard();">
+            <i class="icon icon-pay1"></i>
+            <p>我的会员卡</p>
+        </li>
+        <li ng-click="person_info();">
+            <i class="icon icon-personal"></i>
+            <p>个人信息</p>
+        </li>
+    </ul>
 </footer>
