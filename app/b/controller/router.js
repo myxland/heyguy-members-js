@@ -111,7 +111,17 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
 
     $stateProvider.state('/main', { //导航用的名字，如<a ui-sref="login">login</a>里的login
         url: '/main',
-        templateUrl:'./view/main.html'
+        templateUrl:'./view/main.html',
+        controller:'mainController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/mainController.js']}
+                    )
+                }]
+        }
     }).state('/discount', { //导航用的名字，如<a ui-sref="login">login</a>里的login
         url: '/discount',
         templateUrl:'./view/discount.html',
