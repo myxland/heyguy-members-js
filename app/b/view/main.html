@@ -24,7 +24,7 @@
                             </div>
                             <div class="right-text-con">
                                 <p class="name">会员总数</p>
-                                <p><span class="color-org">8009</span></p>
+                                <p><span class="color-org">{{userTotal}}</span></p>
                             </div>
                         </a>
                     </li>
@@ -35,7 +35,7 @@
                             </div>
                             <div class="right-text-con">
                                 <p class="name">充值总金额</p>
-                                <p><span class="color-org"><small>￥</small>1500</span></p>
+                                <p><span class="color-org"><small>￥</small>{{rechargeFeeTotal}}</span></p>
                             </div>
                         </a>
                     </li>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="right-text-con">
                                 <p class="name">今日消费</p>
-                                <p><span class="color-org"><small>￥</small>1500</span></p>
+                                <p><span class="color-org"><small>￥</small>{{consumeFeeToday}}</span></p>
                             </div>
                         </a>
                     </li>
@@ -60,9 +60,9 @@
                 </ul>
             </div>
             <!--次数-->
-            <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="col-xs-12 col-sm-12 col-md-6" style="padding-top: 15px">
                 <div class="server-panel panel panel-default">
-                    <div class="panel-header"><span></span>消费金额排行</div>
+                    <div class="panel-header"><span>消费金额排行</span></div>
                     <table class="layui-table welcometab" lay-skin="line">
                         <colgroup>
                             <col>
@@ -71,76 +71,51 @@
                             <col>
                         </colgroup>
                         <tbody>
-                        <tr ng-repeat="a in consumFeeList">
-                            <td class="table-center">1</td>
-                            <td class="table-center">{{a.realName}}</td>
-                            <td class="table-center">{{a.userPhone}}</td>
-                            <td class="table-center">{{a.payFee}}</td>
-                        </tr>
+                            <tr ng-repeat="a in consumFeeList">
+                                <td class="table-center">{{a.realName}}</td>
+                                <td class="table-center">{{a.userPhone}}</td>
+                                <td class="table-center">￥{{a.payFee}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="col-xs-12 col-sm-12 col-md-6" style="padding-top: 15px">
                 <div class="server-panel panel panel-default">
-                    <div class="panel-header"><span></span>消费次数排行</div>
+                    <div class="panel-header"><span>消费次数排行</span></div>
                     <table class="layui-table welcometab" lay-skin="line">
                         <colgroup>
                             <col>
                             <col>
                             <col>
                             <col>
-                            <col>
-                            <col>
                         </colgroup>
                         <tbody>
-                        <tr>
-                            <td class="table-center">1</td>
-                            <td class="table-center">张三</td>
-                            <td class="table-center">15845623659</td>
-                            <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-danger">折扣卡</button></td>
-                            <td class="table-center">￥1500</td>
-                        </tr>
-                        <tr>
-                            <td class="table-center">2</td>
-                            <td class="table-center">张三</td>
-                            <td class="table-center">15845623659</td>
-                            <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-normal">储值卡</button></td>
-                            <td class="table-center">￥1500</td>
-                        </tr>
+                            <tr ng-repeat="a in consumCountList">
+                                <td class="table-center">{{a.realName}}</td>
+                                <td class="table-center">{{a.userPhone}}</td>
+                                <td class="table-center">{{a.count}}次</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12" style="padding-top: 15px">
                 <div class="server-panel panel panel-default">
-                    <div class="panel-header"><span></span>充值金额排行</div>
+                    <div class="panel-header"><span>充值金额排行</span></div>
                     <table class="layui-table welcometab" lay-skin="line">
                         <colgroup>
                             <col>
                             <col>
                             <col>
                             <col>
-                            <col>
-                            <col>
                         </colgroup>
                         <tbody>
-                        <tr>
-                            <td class="table-center">1</td>
-                            <td class="table-center">张三</td>
-                            <td class="table-center">15845623659</td>
-                            <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-danger">折扣卡</button></td>
-                            <td class="table-center">￥1500</td>
-                            <td class="table-center">消费时间：2018-02-02 12:26:23</td>
-                        </tr>
-                        <tr>
-                            <td class="table-center">2</td>
-                            <td class="table-center">张三</td>
-                            <td class="table-center">15845623659</td>
-                            <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-normal">储值卡</button></td>
-                            <td class="table-center">￥1500</td>
-                            <td class="table-center">消费时间：2018-02-02 12:26:23</td>
-                        </tr>
+                            <tr ng-repeat="a in rechargeFeeList">
+                                <td class="table-center">{{a.realName}}</td>
+                                <td class="table-center">{{a.userPhone}}</td>
+                                <td class="table-center">￥{{a.payFee}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -150,6 +125,8 @@
 </div>
 </body>
     <script src="/b/js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/b/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+
     <script src="/b/js/common.js" type="text/javascript" charset="utf-8"></script>
     <script src="/b/controller/mainController.js" type="text/javascript" charset="utf-8"></script>
 </html>
