@@ -144,7 +144,7 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                 function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name:'personApp',
-                        files:['./controller/cardDetailController.js']}
+                        files:['./controller/cardDetailController.js','/c/js/qrcode.min.js','/c/js/JsBarcode.all.min.js']}
                     )
                 }]
         }
@@ -184,6 +184,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     return $ocLazyLoad.load({
                         name:'personApp',
                         files:['./controller/chargeController.js']}
+                    )
+                }]
+        }
+    }).state('/consume_list', {
+        url: '/consume_list',
+        templateUrl:'./view/consume_list.html',
+        controller:'consumeController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'personApp',
+                        files:['./controller/consumeController.js']}
                     )
                 }]
         }
