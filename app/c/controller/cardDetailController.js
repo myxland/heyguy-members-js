@@ -7,7 +7,23 @@ var app = angular.module("personApp");
 
 app.controller('cardDetailController',['$scope','$http','$location','$window','$rootScope',function ($scope,$http,$location,$rootScope){
     $scope.card = JSON.parse(localStorage.getItem('card_info'));
-    console.log("card info:"+$scope.card);
+
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        width : 150,
+        height : 150
+    });
+
+    qrcode.makeCode($scope.card.cardNo);
+
+    var barcode = document.getElementById('barcode'),
+        str = $scope.card.cardNo,
+        options = {
+            format: "CODE128",
+            displayValue: true,
+            fontSize: 18,
+            height: 80
+        };
+    JsBarcode(barcode, str, options);
 
     /**
      * 充值
