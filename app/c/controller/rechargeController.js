@@ -3,7 +3,7 @@
  */
 var app = angular.module("personApp");
 
-app.controller('rechargeController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window,curr_data){
+app.controller('rechargeController',['$scope','$http','$location','$window',function ($scope,$http,$location){
 
     /**
      * 加载充值记录
