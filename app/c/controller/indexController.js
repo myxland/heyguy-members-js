@@ -32,7 +32,8 @@ app.controller('indexController',['$scope','$http','$location','$window',functio
      * 积分列表
      */
     $scope.point = function(){
-        $location.path('point');
+        layer.msg('无积分信息');
+        //$location.path('point');
     }
 
     /**
@@ -40,6 +41,13 @@ app.controller('indexController',['$scope','$http','$location','$window',functio
      */
     $scope.person_info = function(){
         $location.path('person_info');
+    }
+
+    /**
+     *
+     */
+    $scope.getCoupons = function(){
+        layer.msg('无优惠券信息');
     }
 
 

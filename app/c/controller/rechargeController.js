@@ -18,8 +18,9 @@ app.controller('rechargeController',['$scope','$http','$location','$window',func
             },
             cache:false,
         }).success(function (data,status) {
+            console.log("充值记录："+data.data);
             if(data.code=='0'){
-                $scope.rec_list = data.data;
+                $scope.rec_list = data.data.content;
             }else{
                 layer.msg(data.msg);
             }
