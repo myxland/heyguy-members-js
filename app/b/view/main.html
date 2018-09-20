@@ -69,23 +69,13 @@
                             <col>
                             <col>
                             <col>
-                            <col>
-                            <col>
                         </colgroup>
                         <tbody>
-                        <tr>
+                        <tr ng-repeat="a in consumFeeList">
                             <td class="table-center">1</td>
-                            <td class="table-center">张三</td>
-                            <td class="table-center">15845623659</td>
-                            <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-danger">折扣卡</button></td>
-                            <td class="table-center">100次</td>
-                        </tr>
-                        <tr>
-                            <td class="table-center">2</td>
-                            <td class="table-center">张三</td>
-                            <td class="table-center">15845623659</td>
-                            <td class="table-center"><button class="layui-btn layui-btn-mini layui-btn-normal">储值卡</button></td>
-                            <td class="table-center">100次</td>
+                            <td class="table-center">{{a.realName}}</td>
+                            <td class="table-center">{{a.userPhone}}</td>
+                            <td class="table-center">{{a.payFee}}</td>
                         </tr>
                         </tbody>
                     </table>
