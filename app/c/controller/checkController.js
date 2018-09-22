@@ -8,7 +8,6 @@ var app = angular.module("checkApp");
 app.controller('checkController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window,curr_data){
 
     if(login_user!=null&&login_user!=undefined&&login_user!='undefined'){
-        //$location.path('index');
         $window.location.href = "/c/frame";
     }
     /**
@@ -27,7 +26,8 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
             $scope.access_token = d.access_token;
             $scope.refresh_token = d.refresh_token;
             $scope.openid = d.openid;
-            curr_data.openid = d.openid;
+            //curr_data.openid = d.openid;
+            localStorage.setItem('openid',d.openid);
         }).error(function (response,status,header,errcode,errmsg) {
             layer.msg('提示','数据加载异常'+response+"status:"+status+","+errcode+","+errmsg);
         });

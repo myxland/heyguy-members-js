@@ -3,7 +3,7 @@
  */
 var app = angular.module("personApp");
 
-app.controller('chargeController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window,curr_data){
+app.controller('chargeController',['$scope','$http','$location','$window',function ($scope,$http,$location,$window){
 
     $scope.card = JSON.parse(localStorage.getItem('card_info'));
 
@@ -23,17 +23,18 @@ app.controller('chargeController',['$scope','$http','$location','$window',functi
             layer.msg('请输入充值金额');
             return;
         }
+        var openid = localStorage.getItem('openid');
         $http({
             method:"POST",
             url:base_url+"/2c/wechat/goPaymen",
             data:{
-                card_no:$scope.card.card_no,
+                card_no:$scope.card.cardNo,
                 money:money,
-                openid:curr_data.openid
+                openid:openid
             },
             cache:false,
         }).success(function (data,status) {
-            if(data.CODE=='1000'){
+            if(data.code=='0'){
                 nonceStr = data.data.noncestr;
                 package_str = "prepay_id="+data.data.prepay_id; //需要生成订单后获取
                 appid = data.data.appid;
@@ -78,9 +79,10 @@ app.controller('chargeController',['$scope','$http','$location','$window',functi
                     // 使用以上方式判断前端返回,微信团队郑重提示：
                     //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
                     layer.msg("支付成功");
-                    //$scope.getOneOrder();
                     //跳转订单详细页面
-                    $location.path("/index");
+                    $window.location.href = "/c/frame#/index"
+                }else{
+                    layer.msg(res.err_msg);
                 }
             });
     }
