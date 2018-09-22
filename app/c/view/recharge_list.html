@@ -5,7 +5,7 @@
 </section>
 <section class="list">
     <ul>
-        <li ng-repeat="rec in rec_list">
+        <li ng-repeat="rec in rec_list" ng-show="rec.paymentStatus==1">
             <div class="text">
                 <p class="card">{{rec.user.card.shop.shopName}}会员卡</p>
                 <p class="time">{{rec.user.card.cardNo}}</p>
