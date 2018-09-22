@@ -9,8 +9,8 @@ app.controller('cardDetailController',['$scope','$http','$location','$window','$
     $scope.card = JSON.parse(localStorage.getItem('card_info'));
 
     var qrcode = new QRCode(document.getElementById("qrcode"), {
-        width : 150,
-        height : 150
+        width : 200,
+        height : 200
     });
 
     qrcode.makeCode($scope.card.cardNo);
