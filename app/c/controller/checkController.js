@@ -27,12 +27,11 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
             $scope.refresh_token = d.refresh_token;
             $scope.openid = d.openid;
             localStorage.setItem('openid',d.openid);
+            $scope.check_user_info();
         }).error(function (response,status,header,errcode,errmsg) {
             layer.msg('提示','数据加载异常'+response+"status:"+status+","+errcode+","+errmsg);
         });
     }
-
-    $scope.getAccessToken();
 
     var wait=60;
     $scope.send_code = function(){
@@ -114,7 +113,7 @@ app.controller('checkController',['$scope','$http','$location','$window',functio
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                $scope.check_user_info();
+                $scope.getAccessToken();
             }else{
                 layer.msg(data.msg);
             }
