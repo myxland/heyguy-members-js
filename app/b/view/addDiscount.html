@@ -1,28 +1,41 @@
-<div class="wrap-container">
-	<form class="" style="width: 90%;padding-top: 20px;">
-		<div class="layui-form-item">
-			<label class="layui-form-label">优惠名称：</label>
-			<div class="layui-input-block">
-				<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入优惠名称" autocomplete="off" class="layui-input" ng-model="name">
-			</div>
+<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+	<ul class="layui-tab-title">
+		<li class="layui-this welcome">充值优惠</li>
+	</ul>
+	<div class="layui-tab-content">
+		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
+			<div class="wrap-container">
+				<form class="" style="width: 90%;padding-top: 20px;">
+					<div class="layui-form-item">
+						<label class="layui-form-label">优惠名称：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入优惠名称" autocomplete="off" class="layui-input" ng-model="name">
+						</div>
 
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">优惠类型：</label>
-			<div class="layui-input-block">
-				<div>满送：满<input style="height: 20px;" type="text" value="" ng-model="fullMoney" class="input-yh"/>送<input style="height: 20px;" type="text" value="" ng-model="addMoney" class="input-yh"/></div>
-				<!--
-				<div><input type="radio" name="cardType" checked>满送：满<input type="text" value="" ng-model="fullMoney" class="input-yh"/>送<input type="text" value="" ng-model="addMoney" class="input-yh"/></div>
-				<div><input type="radio" name="cardType" >折扣：总价打<input type="text" value=""  class="input-yh"/>折</div>
-				-->
-			</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">优惠类型：</label>
+						<div class="layui-input-block">
+							<div>满送：满<input style="height: 20px;" type="text" value="" ng-model="fullMoney" class="input-yh"/>送<input style="height: 20px;" type="text" value="" ng-model="addMoney" class="input-yh"/></div>
+							<!--
+                            <div><input type="radio" name="cardType" checked>满送：满<input type="text" value="" ng-model="fullMoney" class="input-yh"/>送<input type="text" value="" ng-model="addMoney" class="input-yh"/></div>
+                            <div><input type="radio" name="cardType" >折扣：总价打<input type="text" value=""  class="input-yh"/>折</div>
+                            -->
+						</div>
 
-		</div>
-		<div class="layui-form-item">
-			<div class="layui-input-block">
-				<button class="layui-btn layui-btn-danger" ng-click="addDiscount();">立即提交</button>
-				<button type="reset" class="layui-btn layui-btn-primary" ng-click="resetDiscount();">重置</button>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn layui-btn-danger" ng-click="addDiscount();">立即提交</button>
+							<button type="reset" class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
-	</form>
+	</div>
 </div>
+
+
+
+

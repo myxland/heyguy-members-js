@@ -188,4 +188,9 @@ angular.module("shopApp").controller('mainController',['$scope','$http','$locati
 
     $scope.getConsumeFeeToday();
 
+
+    $scope.goConsume = function(){
+        $location.path('addConsume');
+    }
+
 }]);

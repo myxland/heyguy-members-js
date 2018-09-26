@@ -34,7 +34,7 @@ app.controller('userController',['$scope','$http','$location','$window','curr_da
     }
 
     /**
-     * 查询一页优惠信息
+     * 查询一页用户信息
      */
     $scope.getOnePageUser = function(){
         $http({

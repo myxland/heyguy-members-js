@@ -1,55 +1,71 @@
-<div class="wrap-container clearfix">
-	<div class="column-content-detail">
-		<form class="" action="">
-			<div class="layui-form-item">
-				<div class="layui-inline">
-					<input style="height: 35px;" type="text" name="title" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="userPhone">
-				</div>
-				<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getOnePageRecharge();">搜索</button>
-				<p class="layui-btn layui-btn-danger" ng-click="addRechargeClick();">会员卡充值</p>
-			</div>
-		</form>
-		<div class="layui-form" id="table-list">
-			<table class="layui-table" lay-even lay-skin="nob">
-				<colgroup>
-					<col>
-					<col>
-					<col>
-					<col>
-					<col>
-					<col>
-					<col width="250">
-				</colgroup>
-				<thead>
-					<tr>
-						<th class="table-center">姓名</th>
-						<th class="table-center">手机号</th>
-						<th class="table-center">充值时间</th>
-						<th class="table-center">卡号</th>
-						<th class="table-center">卡类型</th>
-						<th class="table-center">充值金额</th>
-						<th class="table-center">会员状态</th>
-					</tr>
-				</thead>
-				<tbody>
+<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+	<ul class="layui-tab-title">
+		<li class="layui-this welcome">充值管理</li>
+	</ul>
+	<div class="layui-tab-content">
+		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
+			<div class="wrap-container clearfix">
+				<div class="column-content-detail">
+					<form class="" action="">
+						<div class="layui-form-item">
+							<div class="layui-inline">
+								<input style="height: 35px;" type="text" name="title" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="userPhone">
+							</div>
+							<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getOnePageRecharge();">搜索</button>
+							<p class="layui-btn layui-btn-danger" ng-click="addRechargeClick();">会员卡充值</p>
+						</div>
+					</form>
+					<div class="layui-form" id="table-list">
+						<table class="layui-table" lay-even lay-skin="nob">
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col width="250">
+							</colgroup>
+							<thead>
+							<tr>
+								<th class="table-center">编号</th>
+								<th class="table-center">姓名</th>
+								<th class="table-center">手机号</th>
+								<th class="table-center">充值时间</th>
+								<th class="table-center">卡号</th>
+								<th class="table-center">卡类型</th>
+								<th class="table-center">充值金额</th>
+								<th class="table-center">会员状态</th>
+							</tr>
+							</thead>
+							<tbody>
 
-				<tr ng-repeat="a in rechargeList|filter:{'userPhone':userPhone}">
-					<td class="table-center">{{a.user.person.realName}}</td>
-					<td class="table-center">{{a.userPhone}}</td>
-					<td class="table-center">{{a.createTime}}</td>
-					<td class="table-center">{{a.user.card.cardNo}}</td>
-					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.card.cardType==1]">{{a.user.card.cardType | card_type}}</button></td>
-					<td class="table-center">{{a.fee}}</td>
-					<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.status==1]">{{a.user.status | user_status_shop}}</button></td>
-				</tr>
-				<tr>
-					<td colspan="18">
-						<uib-pagination  items-per-page="prePage" ng-change="getOnePageRecharge()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="第一页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true"></uib-pagination>
-						共：{{totalItems}} 条
-					</td>
-				</tr>
-				</tbody>
-			</table>
+							<tr ng-repeat="a in rechargeList|filter:{'userPhone':userPhone}">
+								<td class="table-center">{{(currentPage-1)*prePage+$index+1}}</td>
+								<td class="table-center">{{a.user.person.realName}}</td>
+								<td class="table-center">{{a.userPhone}}</td>
+								<td class="table-center">{{a.createTime}}</td>
+								<td class="table-center">{{a.user.card.cardNo}}</td>
+								<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.card.cardType==1]">{{a.user.card.cardType | card_type}}</button></td>
+								<td class="table-center">{{a.fee}}</td>
+								<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.status==1]">{{a.user.status | user_status_shop}}</button></td>
+							</tr>
+							<tr>
+								<td colspan="18">
+									<uib-pagination  items-per-page="prePage" ng-change="getOnePageRecharge()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="第一页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true"></uib-pagination>
+									共：{{totalItems}} 条
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
+
+
+
+
+

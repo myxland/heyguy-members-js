@@ -46,4 +46,8 @@ app.controller('addGiftCardController',['$scope','$http','$location','$window','
         $scope.remark = '';
     }
 
+    $scope.goBack = function(){
+        $location.path('giftCard');
+    }
+
 }]);

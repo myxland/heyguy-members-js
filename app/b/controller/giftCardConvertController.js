@@ -56,7 +56,7 @@ app.controller('giftCardConvertController',['$scope','$http','$location','$windo
         var dialog = layui.dialog;
 
         dialog.confirm({
-            message:'您确定删除此礼品卡？',
+            message:'您确定删除此兑换记录？',
             success:function(){
                 $http({
                     method:"POST",

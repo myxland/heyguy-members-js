@@ -48,7 +48,7 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.interceptors.push('ResponseInterceptor');
-
+    $httpProvider.defaults.withCredentials = true;
 
     // Override $http service's default transformRequest
     $httpProvider.defaults.transformRequest = [function (data) {
@@ -93,14 +93,17 @@ app.controller('loginController',['$scope','$http','$location','$window',functio
     $scope.login = function(){
         var username = $scope.username;
         var password = $scope.password;
+        var valid_code = $scope.valid_code;
         $http({
             method:"POST",
             url:base_url+"/user/admin/login",
             data:{
                 user_phone:username,
                 password:password,
-                type:"9"
+                type:"9",
+                valid_code:valid_code
             },
+            xhrFields: {  withCredentials: true },
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){

@@ -1,52 +1,61 @@
-<div class="wrap-container">
-	<form class="layui-form" style="width: 90%;padding-top: 20px;">
-			<div class="layui-form-item">
-				<label class="layui-form-label">姓名：</label>
-				<div class="layui-input-block">
-					<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" ng-model="realName">
-				</div>
+<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+	<ul class="layui-tab-title">
+		<li class="layui-this welcome">会员管理</li>
+	</ul>
+	<div class="layui-tab-content">
+		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
+			<div class="wrap-container">
+				<form class="layui-form" style="width: 90%;padding-top: 20px;">
+					<div class="layui-form-item">
+						<label class="layui-form-label">姓名：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input" ng-model="realName">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">手机号：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="phoneNo">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">卡号：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入卡号" autocomplete="off" class="layui-input" ng-model="cardNo">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">卡类型：</label>
+						<div class="layui-input-block">
+							<input  type="radio" name ="cardType" value="1" checked>储值卡
+							<!--
+                            <input type="radio" name="cardType" value="2" >折扣卡
+                            -->
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">金额：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">选择优惠：</label>
+						<div class="layui-input-block">
+							<input type="checkbox" name ="ifDiscount" id = "ifDiscount" checked>满送
+							<!--
+                            <input type="checkbox" name="ifDiscount" >9折
+                            -->
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn layui-btn-danger" ng-click="addUser();">立即提交</button>
+							<button class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">手机号：</label>
-				<div class="layui-input-block">
-					<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="phoneNo">
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">卡号：</label>
-				<div class="layui-input-block">
-					<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入卡号" autocomplete="off" class="layui-input" ng-model="cardNo">
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">卡类型：</label>
-				<div class="layui-input-block">
-					<input  type="radio" name ="cardType" value="1" checked>储值卡
-					<!--
-					<input type="radio" name="cardType" value="2" >折扣卡
-					-->
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">金额：</label>
-				<div class="layui-input-block">
-					<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<label class="layui-form-label">选择优惠：</label>
-				<div class="layui-input-block">
-					<input type="checkbox" name ="ifDiscount" id = "ifDiscount" checked>满送
-					<!--
-					<input type="checkbox" name="ifDiscount" >9折
-					-->
-				</div>
-			</div>
-			<div class="layui-form-item">
-				<div class="layui-input-block">
-					<button class="layui-btn layui-btn-danger" ng-click="addUser();">立即提交</button>
-					<button class="layui-btn layui-btn-primary" ng-click="resetUser();">重置</button>
-				</div>
-			</div>
-		</form>
+		</div>
+	</div>
 </div>

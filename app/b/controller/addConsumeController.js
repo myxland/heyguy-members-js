@@ -156,4 +156,10 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             layer.msg('系统繁忙、稍后再试');
         });
     }
+
+
+    $scope.goBack = function(){
+        $location.path('consume');
+    }
+
 }]);

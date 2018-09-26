@@ -74,4 +74,8 @@ app.controller('addUserController',['$scope','$http','$location','$window','curr
         $scope.fee = '';
     }
 
+    $scope.goBack = function(){
+        $location.path('user');
+    }
+
 }]);

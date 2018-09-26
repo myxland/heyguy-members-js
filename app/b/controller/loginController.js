@@ -48,7 +48,7 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.interceptors.push('ResponseInterceptor');
-
+    $httpProvider.defaults.withCredentials = true;
 
     // Override $http service's default transformRequest
     $httpProvider.defaults.transformRequest = [function (data) {
@@ -93,13 +93,15 @@ app.controller('loginController',['$scope','$http','$location','$window',functio
     $scope.login = function(){
         var username = $scope.username;
         var password = $scope.password;
+        var valid_code = $scope.valid_code;
         $http({
             method:"POST",
             url:base_url+"/user/admin/login",
             data:{
                 user_phone:username,
                 password:password,
-                type:"2"
+                type:"2",
+                valid_code:valid_code
             },
             cache:false,
         }).success(function (data,status) {
@@ -107,7 +109,7 @@ app.controller('loginController',['$scope','$http','$location','$window',functio
                 localStorage.setItem("shopUser",JSON.stringify(data.data));//AdminUser = data.data;
                 $window.location.href = "/b/frame";
             }else{
-                layui.layer.alert('账户或密码不正确');
+                layui.layer.alert('账户、密码或验证码不正确');
             }
         })
             .error(function (response,status,header) {

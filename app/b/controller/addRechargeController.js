@@ -50,4 +50,8 @@ app.controller('addRechargeController',['$scope','$http','$location','$window','
         $scope.fee = '';
     }
 
+    $scope.goBack = function(){
+        $location.path('recharge');
+    }
+
 }]);

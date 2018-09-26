@@ -56,4 +56,8 @@ app.controller('addDiscountController',['$scope','$http','$location','$window','
         $scope.fullMoney = '';
         $scope.addMoney = '';
     }
+
+    $scope.goBack = function(){
+        $location.path('discount');
+    }
 }]);
