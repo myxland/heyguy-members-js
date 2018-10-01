@@ -54,10 +54,10 @@ app.controller('addUserController',['$scope','$http','$location','$window','curr
         }).success(function (data,status) {
             if(data.code=='0'){
                 $scope.phone = '';
-                layui.layer.alert("成功");
+                layui.layer.msg("成功");
                 $location.path("user");
             }else{
-                layui.layer.alert(data.msg);
+                layui.layer.msg(data.msg);
             }
         }).error(function (response,status,header) {
                 layui.layer.alert('系统繁忙、稍后再试');

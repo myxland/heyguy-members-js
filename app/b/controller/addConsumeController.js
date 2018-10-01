@@ -66,10 +66,10 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             cache:false,
         }).success(function (data,status) {
             if(data.code=='0'){
-                layui.layer.alert("操作成功");
+                layui.layer.msg("操作成功");
                 $location.path("consume");
             }else{
-                layui.layer.alert(data.msg);
+                layui.layer.msg(data.msg);
             }
         }).error(function (response,status,header) {
                 layui.layer.alert('系统繁忙、稍后再试');
