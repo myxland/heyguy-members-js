@@ -60,12 +60,12 @@
 							<input style="height: 35px;" type="text" name="title" ng-change="shop_pay_fee_change();" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
 						</div>
 					</div>
-					<div class="layui-form-item">
-						<label class="layui-form-label">验证码：</label>
-						<div class="layui-input-block">
-							<input style="height: 35px;" type="text" name="title" placeholder="请输入验证码" autocomplete="off" class="layui-input" ng-model="checkCode">
-						</div>
-					</div>
+					<!--<div class="layui-form-item">-->
+						<!--<label class="layui-form-label">验证码：</label>-->
+						<!--<div class="layui-input-block">-->
+							<!--<input style="height: 35px;" type="text" name="title" placeholder="请输入验证码" autocomplete="off" class="layui-input" ng-model="checkCode">-->
+						<!--</div>-->
+					<!--</div>-->
 					<div class="layui-form-item">
 						<label class="layui-form-label">实付金额：</label>
 						<label id="real_pay" class="layui-form-label" style="text-align: left;color: red;">
@@ -74,8 +74,8 @@
 					</div>
 					<div class="layui-form-item" ng-show="userBean.status==1">
 						<div class="layui-input-block">
-							<button id="send_btn" class="layui-btn layui-btn-danger" ng-click="sendCode();">获取验证码</button>
-							<button class="layui-btn layui-btn-danger" ng-click="checkClick();">结账</button>
+							<!--<button id="send_btn" class="layui-btn layui-btn-danger" ng-click="sendCode();">获取验证码</button>-->
+							<button class="layui-btn layui-btn-danger" ng-click="check_out();">结账</button>
 							<button class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
 						</div>
 					</div>

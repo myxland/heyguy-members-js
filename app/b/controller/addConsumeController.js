@@ -45,7 +45,7 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
         }
         var fee = $scope.fee;
         if(fee==undefined||fee==''){
-            layui.layer.alert("请输入消费金额");
+            layui.layer.alert("请输入订单金额");
             return;
         }
         if(parseFloat($scope.real_pay_fee)>parseFloat($scope.userBean.card.balance)){
@@ -76,15 +76,50 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             });
     }
 
-    var wait=60;
-    $scope.sendCode = function(){
-        var phone_no = $scope.userBean.userPhone;
-        if(phone_no==undefined||phone_no==''||phone_no.length!=11){
-            layer.msg('请输入正确手机号');
+    /**
+     * 点击结账
+     */
+    $scope.check_out = function(){
+        var coupons_id = $("input[name='user_coupons']:checked").val();
+        if(coupons_id==undefined){
+            coupons_id = '';
+        }
+        var fee = $scope.fee;
+        if(fee==undefined||fee==''){
+            layui.layer.alert("请输入订单金额");
             return;
         }
+        if(parseFloat($scope.real_pay_fee)>parseFloat($scope.userBean.card.balance)){
+            layui.layer.alert("余额不足");
+            return;
+        }
+        layui.layer.open({
+            type: 1
+            ,title: '短信密码' //不显示标题栏
+            ,closeBtn: true
+            ,area: '800px;'
+            ,shade: 0.8
+            ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            ,btn: ['发送验证码', '提交']
+            ,btnAlign: 'c'
+            ,moveType: 1 //拖拽模式，0或者1
+            ,content: '<center><input style="margin-top: 5px;" type="text" value="" id="validCode"/></center>'
+            ,yes: function(index, layero){
+                //按钮【按钮一】的回调
+                $scope.sendCode();
+                $scope.time();
+            }
+            ,btn2: function(index, layero){
+                $scope.checkClick();
+                //return false 开启该代码可禁止点击该按钮关闭
+            }
+        });
+    }
 
-         $scope.time();
+    var wait=60;
+    $scope.sendCode = function(){
+
+        $scope.time();
 
         $http({
             method:"POST",
@@ -108,19 +143,20 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
      * 验证码按钮倒计时
      */
     $scope.time = function(){
-        var o = $("#send_btn");
+        var o = $(".layui-layer-btn0");
         if (wait == 0) {
-            o.attr('disabled','didsabled');
-            o.val('获取验证码');
+            o.html("发送验证码");
+            o.bind("click",$scope.re_click);
             wait = 60;
         } else {
-            o.attr('disabled','didsabled');
-            o.val("重新发送(" + wait + ")");
+            // o.attr('disabled','didsabled');
+            o.unbind("click");
+            o.html("重新发送(" + wait + ")");
             wait--;
             setTimeout(function() {
-                $scope.time();
-            },
-            1000)
+                    $scope.time();
+                },
+                1000)
         }
     }
 
@@ -142,7 +178,7 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
         if(userPhone==undefined||userPhone==''){
             return;
         }
-        var checkCode = $scope.checkCode;
+        var checkCode = document.getElementById('validCode').value;
         if(checkCode==undefined||checkCode==''){
             layui.layer.alert("请输入验证码");
             return;
