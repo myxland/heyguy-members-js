@@ -33,9 +33,10 @@
 								<th class="table-center">手机号</th>
 								<th class="table-center">消费时间</th>
 								<th class="table-center">卡号</th>
-								<th class="table-center">卡类型</th>
-								<th class="table-center">消费金额</th>
-								<th class="table-center">会员状态</th>
+								<th class="table-center">应收金额</th>
+								<th class="table-center">折扣金额</th>
+								<th class="table-center">实付金额</th>
+								<th class="table-center">优惠信息</th>
 							</tr>
 							</thead>
 							<tbody>
@@ -45,13 +46,14 @@
 								<td class="table-center">{{a.userPhone}}</td>
 								<td class="table-center">{{a.createTime}}</td>
 								<td class="table-center">{{a.cardNo}}</td>
-								<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.card.cardType==1]">{{a.user.card.cardType | card_type}}</button></td>
+								<td class="table-center">{{a.should_pay}}</td>
+								<td class="table-center">{{a.discountFee}}</td>
 								<td class="table-center">{{a.payFee}}</td>
-								<td class="table-center"><button ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[a.user.status==1]">{{a.user.status | user_status_shop}}</button></td>
+								<td class="table-center">{{a.discountDesc}}</td>
 
 							</tr>
 							<tr>
-								<td colspan="8">
+								<td colspan="9">
 									<uib-pagination  items-per-page="prePage" ng-change="getOnePageConsume()" total-items="totalItems" ng-model="currentPage" max-size="maxSize" first-text="第一页" previous-text="上一页" next-text="下一页" last-text="最后页" boundary-links="true" boundary-link-numbers="true"></uib-pagination>
 									共：{{totalItems}} 条
 								</td>

@@ -44,10 +44,10 @@ app.controller('indexController',['$scope','$http','$location','$window',functio
     }
 
     /**
-     *
+     *加载优惠券
      */
     $scope.getCoupons = function(){
-        layer.msg('无优惠券信息');
+        $location.path('copuons_list');
     }
 
 

@@ -6,8 +6,10 @@
 var app = angular.module("shopApp");
 
 app.controller('addConsumeController',['$scope','$http','$location','$window','curr_data',function ($scope,$http,$location,$window,curr_data){
+    $scope.coupons_value;
+
     /**
-     * 新增消费信息
+     * 查询用户信息
      */
     $scope.getConsumeByPhone = function(){
         var userPhone = $scope.userPhone;
@@ -37,12 +39,16 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
     }
 
     $scope.addConsume = function(){
+        var coupons_id = $("input[name='user_coupons']:checked").val();
+        if(coupons_id==undefined){
+            coupons_id = '';
+        }
         var fee = $scope.fee;
         if(fee==undefined||fee==''){
             layui.layer.alert("请输入消费金额");
             return;
         }
-        if(fee>$scope.userBean.balance){
+        if(parseFloat($scope.real_pay_fee)>parseFloat($scope.userBean.card.balance)){
             layui.layer.alert("余额不足");
             return;
         }
@@ -50,10 +56,12 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             method:"POST",
             url:base_url+"/consume/add",
             data:{
-                payFee:fee,
+                payFee:$scope.real_pay_fee,
                 userPhone:$scope.userBean.userPhone,
                 cardNo:$scope.userBean.card.cardNo,
-                shopId:$scope.userBean.card.shopId
+                shopId:$scope.userBean.card.shopId,
+                user_coupons_id:coupons_id,
+                should_pay:fee
             },
             cache:false,
         }).success(function (data,status) {
@@ -70,13 +78,13 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
 
     var wait=60;
     $scope.sendCode = function(){
-        var phone_no = $scope.userPhone;
+        var phone_no = $scope.userBean.userPhone;
         if(phone_no==undefined||phone_no==''||phone_no.length!=11){
             layer.msg('请输入正确手机号');
             return;
         }
 
-        // $scope.time();
+         $scope.time();
 
         $http({
             method:"POST",
@@ -125,11 +133,12 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             layui.layer.alert("请输入消费金额");
             return;
         }
-        if(fee>$scope.userBean.card.balance){
+
+        if(parseFloat($scope.real_pay_fee)>parseFloat($scope.userBean.card.balance)){
             layui.layer.alert("余额不足");
             return;
         }
-        var userPhone = $scope.userPhone;
+        var userPhone = $scope.userBean.userPhone;
         if(userPhone==undefined||userPhone==''){
             return;
         }
@@ -160,6 +169,23 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
 
     $scope.goBack = function(){
         $location.path('consume');
+    }
+
+    $scope.coupons_click = function(v){
+        $scope.coupons_value = v;
+        $scope.shop_pay_fee_change();
+    }
+
+    $scope.shop_pay_fee_change = function(){
+        var should_pay = $scope.fee;
+        if(should_pay!=undefined){
+            if($scope.coupons_value!=undefined){
+                $scope.real_pay_fee = parseFloat(should_pay-$scope.coupons_value).toFixed(2)>0?parseFloat(should_pay-$scope.coupons_value).toFixed(2):0;
+            }else{
+                $scope.real_pay_fee = should_pay;
+            }
+        }
+
     }
 
 }]);

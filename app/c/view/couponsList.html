@@ -1,0 +1,37 @@
+<section class="list">
+    <div class="rules">
+        <span class="fl">优惠券列表</span>
+    </div>
+</section>
+<section class="list">
+    <ul >
+        <li ng-repeat="c in coupons_list">
+            <div class="text">
+                <p class="card">店铺：{{c.shop.shopName}}</p>
+                <p class="time" ng-show="c.type==0">有效期：长期有效</p>
+                <p class="time" ng-show="c.type==1">有效期：{{c.beginTime}}至{{c.endTime}}</p>
+                <p class="time">消费金额可用：{{c.min_use_fee}}</p>
+                <p class="time">状态：{{c.useStaus | coupons_use_status}}</p>
+                <p class="time">创建时间：{{c.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+            </div>
+            <p class="data">{{c.coupon_value}}</p>
+        </li>
+    </ul>
+    <div class="no-more">已经没有更多了</div>
+</section>
+<footer class="footer">
+    <ul>
+        <li class="active" ng-click="go_index();">
+            <i class="icon icon-home1"></i>
+            <p>首页</p>
+        </li>
+        <li ng-click="getCard();">
+            <i class="icon icon-pay"></i>
+            <p>我的会员卡</p>
+        </li>
+        <li ng-click="person_info();">
+            <i class="icon icon-personal"></i>
+            <p>个人信息</p>
+        </li>
+    </ul>
+</footer>

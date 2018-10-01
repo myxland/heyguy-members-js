@@ -200,6 +200,19 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/copuons_list', {
+        url: '/copuons_list',
+        templateUrl:'./view/couponsList.html',
+        controller:'couponsListController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'personApp',
+                        files:['./controller/couponsListController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/index');

@@ -1,0 +1,69 @@
+<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+	<ul class="layui-tab-title">
+		<li class="layui-this welcome">优惠券配置</li>
+	</ul>
+	<div class="layui-col-md12">
+	<div class="layui-tab-content">
+		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
+			<div class="wrap-container">
+				<form class="" style="width: 90%;padding-top: 20px;">
+					<div class="layui-form-item">
+						<label class="layui-form-label">优惠券类型：</label>
+						<div class="layui-input-block">
+							<input  type="radio" name ="couponType" value="0" checked ng-click="type_click();">长期有效
+                            <input type="radio" name="couponType" value="1" ng-click="type_click();">限时有效
+						</div>
+					</div>
+
+					<div class="layui-form-item" id="coupons_date" style="display: none;">
+						<label class="layui-form-label">优惠券有效期：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px; width:20%;" required lay-verify="required"  class="layui-input" ng-model="beginTime">至<input style="height: 35px; width:20%;" required lay-verify="required"  class="layui-input" ng-model="endTime">
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">优惠券面值：</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" required lay-verify="required" placeholder="请输入面值" autocomplete="off" class="layui-input" ng-model="coupons_value">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">是否允许叠加：</label>
+						<div class="layui-input-block">
+							<input  type="radio" name ="ifOver" value="0" checked>否
+							<input type="radio" name="ifOver" value="1" >是
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<label class="layui-form-label">最低消费金额可用(0代表无限制):</label>
+						<div class="layui-input-block">
+							<input style="height: 35px;" type="text" value="0" required lay-verify="required" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="min_fee_use">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">首次开卡送券：</label>
+						<div class="layui-input-block">
+							<input  type="radio" name ="firstGive" value="0" checked>否
+							<input type="radio" name="firstGive" value="1" >是
+						</div>
+					</div>
+
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<button class="layui-btn layui-btn-danger" ng-click="addCouponConfig();">立即提交</button>
+							<button type="reset" class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</div>
+
+
+
+

@@ -1,17 +1,19 @@
 <div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
 	<ul class="layui-tab-title">
-		<li class="layui-this welcome">充值优惠</li>
+		<li class="layui-this welcome" ng-click="tab_click('recharge_discount')">充值优惠配置</li>
+		<li class="welcome" ng-click="tab_click('coupons_discount')">优惠券配置</li>
 	</ul>
-	<div class="layui-tab-content">
+
+	<div class="layui-tab-content" id="recharge_discount" >
 		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
 			<div class="wrap-container clearfix">
 				<div class="column-content-detail">
 					<form class="layui-form" action="">
 						<div class="layui-form-item">
-							<p class="layui-btn layui-btn-danger" ng-click="addDiscountClick();">新增优惠</p>
+							<p class="layui-btn layui-btn-danger" ng-click="addDiscountClick();">新增充值优惠配置</p>
 						</div>
 					</form>
-					<div class="layui-form" id="table-list">
+					<div class="layui-form">
 						<table class="layui-table" lay-even lay-skin="nob">
 							<colgroup>
 								<col width="20%">
@@ -49,6 +51,73 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="layui-tab-content" id="coupons_discount" style="display: none;">
+		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
+			<div class="wrap-container clearfix">
+				<div class="column-content-detail">
+					<form class="layui-form" action="">
+						<div class="layui-form-item">
+							<p class="layui-btn layui-btn-danger" ng-click="addCouponsConfigClick();">新增优惠券配置</p>
+						</div>
+					</form>
+					<div class="layui-form" id="table-list">
+						<table class="layui-table" lay-even lay-skin="nob">
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<!--<col>-->
+							</colgroup>
+							<thead>
+							<tr>
+								<th class="table-center">编号</th>
+								<th class="table-center">优惠券类型</th>
+								<th class="table-center">面值</th>
+								<th class="table-center">生效时间</th>
+								<th class="table-center">是否可叠加</th>
+								<th class="table-center">最低金额可用(0表示无限制)</th>
+								<th class="table-center">是否首次开卡赠送</th>
+								<th class="table-center">状态</th>
+								<!--<th class="table-center">创建时间</th>-->
+								<th class="table-center">操作</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="c in configList">
+								<td class="table-center">{{$index+1}}</td>
+								<td class="table-center">{{c.type | coupon_type}}</td>
+								<td class="table-center">{{c.coupon_value}}</td>
+								<td class="table-center" ng-show="c.type==0">长期有效</td>
+								<td class="table-center" ng-show="c.type==1">{{c.beginTime | date:'yyyy-MM-dd'}}至{{c.endTime | date:'yyyy-MM-dd'}}</td>
+								<td class="table-center">{{c.if_over | coupon_if_over}}</td>
+								<td class="table-center">{{c.min_use_fee}}</td>
+								<td class="table-center">{{c.first_user_give | coupon_first_give}}</td>
+								<td class="table-center">{{c.status | coupon_config_status}}</td>
+								<!--<td class="table-center">{{c.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>-->
+								<td class="table-center">
+									<div class="layui-inline">
+										<button ng-show="c.status==1" class="layui-btn layui-btn-small layui-btn-danger" ng-click="change_config_status(c.id,0)">弃用</button>
+										<button ng-show="c.status==0" class="layui-btn layui-btn-small layui-btn-defult" ng-click="change_config_status(c.id,1)">启用</button>
+										<button class="layui-btn layui-btn-small layui-btn-warm delBtn" ng-click="delete_config(c.id);">删除</button>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 </div>
 
 

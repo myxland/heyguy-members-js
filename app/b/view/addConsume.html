@@ -8,7 +8,7 @@
 				<form class="layui-form" style="width: 90%;padding: 20px 0 0 20px;">
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<input style="height: 35px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input" ng-model="userPhone">
+							<input style="height: 35px;width: 300px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号或者会员卡号" autocomplete="off" class="layui-input" ng-model="userPhone">
 						</div>
 						<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getConsumeByPhone();">搜索</button>
 					</div>
@@ -27,14 +27,12 @@
 							{{userBean.userPhone}}
 						</div>
 					</div>
-					<!--
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">卡类型：</label>
-                        <div class="pt15">
-                            <span ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[userBean.card.cardType==1]">{{userBean.card.cardType | card_type}}</span>
-                        </div>
-                    </div>
-                    -->
+					<div class="layui-form-item">
+						<label class="layui-form-label">卡号：</label>
+						<div class="pt15">
+							{{userBean.card.cardNo}}
+						</div>
+					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">余额：</label>
 						<div class="pt15">{{userBean.card.balance}}</div>
@@ -45,16 +43,27 @@
 							<span ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[userBean.status==1]">{{userBean.status | user_status_shop}}</span>
 						</div>
 					</div>
+					<div class="layui-form-item" ng-repeat="c in userBean.coupons_list">
+						<label class="layui-form-label"><input value="{{c.id}}" ng-click="coupons_click(c.coupon_value);" type="radio" name="user_coupons"/></label>
+						<div class="pt15">{{c.coupon_value}} 元优惠券(满{{c.min_use_fee}}元可用)</div><br>
+					</div>
+
 					<div class="layui-form-item">
-						<label class="layui-form-label">消费金额：</label>
+						<label class="layui-form-label">订单金额：</label>
 						<div class="layui-input-block">
-							<input style="height: 35px;" type="text" name="title" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
+							<input style="height: 35px;" type="text" name="title" ng-change="shop_pay_fee_change();" placeholder="请输入金额" autocomplete="off" class="layui-input" ng-model="fee">
 						</div>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">验证码：</label>
 						<div class="layui-input-block">
 							<input style="height: 35px;" type="text" name="title" placeholder="请输入验证码" autocomplete="off" class="layui-input" ng-model="checkCode">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">实际支付金额：</label>
+						<div class="layui-input-block" id="real_pay" style="color: red;">
+							{{real_pay_fee}}
 						</div>
 					</div>
 					<div class="layui-form-item">
