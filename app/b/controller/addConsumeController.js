@@ -125,7 +125,7 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             method:"POST",
             url:base_url+"/base/sms/sendCheckCode",
             data:{
-                phone:phone_no
+                phone:$scope.userPhone
             },
             cache:false,
         }).success(function (data,status) {
