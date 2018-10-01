@@ -9,10 +9,12 @@
 					<form class="layui-form" action="">
 						<div class="layui-form-item">
 							<div class="layui-inline">
-								<input style="height: 35px;" type="text" name="title"  placeholder="请输入卡号" autocomplete="off" class="layui-input" ng-model="cardNo">
+								<input style="height: 35px;margin-top: 8px;" type="text" name="title"  placeholder="请输入卡号" autocomplete="off" class="layui-input" ng-model="cardNo">
 							</div>
-							<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getOnePage();">搜索</button>
-							<p class="layui-btn layui-btn-danger" ng-click="add();">新增礼品卡</p>
+							<div class="layui-inline">
+								<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getOnePage();">搜索</button>
+								<button class="layui-btn layui-btn-danger" ng-click="add();">新增礼品卡</button>
+							</div>
 						</div>
 					</form>
 					<div class="layui-form" id="table-list">
