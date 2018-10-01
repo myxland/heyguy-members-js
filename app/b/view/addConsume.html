@@ -5,47 +5,53 @@
 	<div class="layui-tab-content">
 		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
 			<div class="wrap-container">
-				<form class="layui-form" style="width: 90%;padding: 20px 0 0 20px;">
+				<form class="layui-form" style="width: 90%;padding: 20px 0 150px 20px;">
 					<div class="layui-form-item">
 						<div class="layui-inline">
-							<input style="height: 35px;width: 300px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号或者会员卡号" autocomplete="off" class="layui-input" ng-model="userPhone">
+							<input style="height: 35px;width: 300px;margin-top: 8px;" type="text" name="title" required lay-verify="required" placeholder="请输入手机号或者会员卡号" autocomplete="off" class="layui-input" ng-model="userPhone">
 						</div>
-						<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getConsumeByPhone();">搜索</button>
+						<div class="layui-inline">
+							<button class="layui-btn layui-btn-normal" lay-submit="search" ng-click="getConsumeByPhone();">搜索</button>
+						</div>
 					</div>
 					<ul class="layui-tab-title">
 						<li class="layui-this">会员信息</li>
 					</ul>
 					<div class="layui-form-item pt15">
 						<label class="layui-form-label">姓名：</label>
-						<div class="pt15">
+						<label class="layui-form-label" style="text-align: left;">
 							{{userBean.person.realName}}
-						</div>
+						</label>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">手机号：</label>
-						<div class="pt15">
+						<label class="layui-form-label" style="text-align: left;">
 							{{userBean.userPhone}}
-						</div>
+						</label>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">卡号：</label>
-						<div class="pt15">
+						<label class="layui-form-label" style="text-align: left;">
 							{{userBean.card.cardNo}}
-						</div>
+						</label>
 					</div>
 					<div class="layui-form-item">
-						<label class="layui-form-label">余额：</label>
-						<div class="pt15">{{userBean.card.balance}}</div>
+						<label class="layui-form-label" >余额：</label>
+						<label class="layui-form-label" style="text-align: left;color: red;">
+							{{userBean.card.balance}}
+						</label>
 					</div>
 					<div class="layui-form-item">
 						<label class="layui-form-label">会员状态：</label>
-						<div class="pt15">
+						<label class="layui-form-label" style="text-align: left;">
 							<span ng-class="{true:'layui-btn layui-btn-mini layui-btn-normal',false:'layui-btn layui-btn-mini layui-btn-danger'}[userBean.status==1]">{{userBean.status | user_status_shop}}</span>
-						</div>
+						</label>
 					</div>
 					<div class="layui-form-item" ng-repeat="c in userBean.coupons_list">
-						<label class="layui-form-label"><input value="{{c.id}}" ng-click="coupons_click(c.coupon_value);" type="radio" name="user_coupons"/></label>
-						<div class="pt15">{{c.coupon_value}} 元优惠券(满{{c.min_use_fee}}元可用)</div><br>
+						<!--<label class="layui-form-label"><input value="{{c.id}}" ng-click="coupons_click(c.coupon_value);" type="radio" name="user_coupons"/></label>-->
+						<!--<div class="pt15">{{c.coupon_value}} 元优惠券(满{{c.min_use_fee}}元可用)</div><br>-->
+						<label class="layui-form-label"></label>
+						<label style="float:left;margin-top: 5px;"><input value="{{c.id}}" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;" ng-click="coupons_click(c.coupon_value);" type="radio" name="user_coupons"/>{{c.coupon_value}} 元优惠券(满{{c.min_use_fee}}元可用)</label>
 					</div>
 
 					<div class="layui-form-item">
@@ -61,16 +67,22 @@
 						</div>
 					</div>
 					<div class="layui-form-item">
-						<label class="layui-form-label">实际支付金额：</label>
-						<div class="layui-input-block" id="real_pay" style="color: red;">
+						<label class="layui-form-label">实付金额：</label>
+						<label id="real_pay" class="layui-form-label" style="text-align: left;color: red;">
 							{{real_pay_fee}}
-						</div>
+						</label>
 					</div>
-					<div class="layui-form-item">
+					<div class="layui-form-item" ng-show="userBean.status==1">
 						<div class="layui-input-block">
 							<button id="send_btn" class="layui-btn layui-btn-danger" ng-click="sendCode();">获取验证码</button>
 							<button class="layui-btn layui-btn-danger" ng-click="checkClick();">结账</button>
 							<button class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
+						</div>
+					</div>
+					<div class="layui-form-item" ng-show="userBean.status==0">
+						<div class="layui-input-block">
+							<button class="layui-btn layui-btn-primary">账户冻结不能结账</button>
+
 						</div>
 					</div>
 				</form>
