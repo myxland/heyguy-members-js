@@ -109,10 +109,12 @@ app.controller('loginController',['$scope','$http','$location','$window',functio
                 localStorage.setItem("shopUser",JSON.stringify(data.data));//AdminUser = data.data;
                 $window.location.href = "/b/frame";
             }else{
+                $("#verify_img").attr('src',base_url+'/base/getVerify?t='+Math.random());
                 layui.layer.alert('账户、密码或验证码不正确');
             }
         })
             .error(function (response,status,header) {
+                $("#verify_img").attr('src',base_url+'/base/getVerify?t='+Math.random());
                 layui.layer.alert('系统繁忙、稍后再试');
             });
 

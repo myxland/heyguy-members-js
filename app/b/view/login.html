@@ -26,7 +26,7 @@
 							<input type="text" name="verity" ng-model="valid_code" required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-inline">
-							<img class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="http://47.92.208.3:8090/base/getVerify" alt="点击更换验证码"/>
+							<img id="verify_img" class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="http://47.92.208.3:8090/base/getVerify" alt="点击更换验证码"/>
 						</div>
 					</div>
 					<div class="layui-form-item m-login-btn">
@@ -43,6 +43,7 @@
 		</div>
 	</div>
 	<span us-spinner></span>
+	<script src="/jquery/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/b/layui/layui.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/angular/angular-1.5.11.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/angular/angular-ui-router.js" type="text/javascript" charset="utf-8"></script>

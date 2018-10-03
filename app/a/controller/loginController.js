@@ -110,10 +110,12 @@ app.controller('loginController',['$scope','$http','$location','$window',functio
                 localStorage.setItem("adminUser",JSON.stringify(data.data));//AdminUser = data.data;
                 $window.location.href = "/a/frame";
             }else{
+                $("#verify_img").attr('src',base_url+'/base/getVerify?t='+Math.random());
                 layui.layer.alert('账户或密码不正确');
             }
         })
             .error(function (response,status,header) {
+                $("#verify_img").attr('src',base_url+'/base/getVerify?t='+Math.random());
                 layui.layer.alert('系统繁忙、稍后再试');
             });
 
