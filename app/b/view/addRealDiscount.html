@@ -1,0 +1,54 @@
+<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+    <ul class="layui-tab-title">
+        <li class="layui-this welcome">消费折扣优惠</li>
+    </ul>
+    <div class="layui-col-md12">
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show" style="background: #e8eeef;">
+                <div class="wrap-container">
+                    <form class="" style="width: 90%;padding-top: 20px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">消费折扣类型：</label>
+                            <div class="layui-input-block">
+                                <input  type="radio" name ="realDiscountType" value="0" checked ng-click="type_click();">长期有效
+                                <input type="radio" name="realDiscountType" value="1" ng-click="type_click();">限时有效
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" id="realdiscount_date" style="display: none;">
+                            <label class="layui-form-label">消费折扣有效期：</label>
+                            <div class="layui-input-block">
+                                <input style="height: 35px; width:20%;" required lay-verify="required"  class="layui-input" ng-model="startDate">至<input style="height: 35px; width:20%;" required lay-verify="required"  class="layui-input" ng-model="endDate">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">折扣：</label>
+                            <div class="layui-input-block">
+                                <input type="number" style="height: 35px;" required lay-verify="required" placeholder="百分比数值" autocomplete="off" class="layui-input" ng-model="discountValue">%
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否允许叠加：</label>
+                            <div class="layui-input-block">
+                                <input  type="radio" name ="ifOver" value="0" checked>否
+                                <input type="radio" name="ifOver" value="1" >是
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-btn-danger" ng-click="addRealDiscountConfig();">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -199,4 +199,194 @@ app.controller('discountController',['$scope','$http','$location','$window','cur
         });
     }
 
+    /**
+     * 加载全部打折配置信息
+     */
+    $scope.getAllRealDiscountConfig = function(){
+        $http({
+            method:"GET",
+            url:base_url+"/realdiscount/findAllByShop?shop_id="+admin_user.shopId,
+            cache:false,
+        }).success(function (data,status) {
+            if(data.code=='0'){
+                $scope.realDiscountList = data.data;
+            }else{
+                layui.layer.alert(data.msg);
+            }
+        })
+            .error(function (response,status,header) {
+                layui.layer.alert('系统繁忙、稍后再试');
+            });
+    }
+
+    $scope.getAllRealDiscountConfig();
+
+    /**
+     * 加载全部打折配置信息
+     */
+    $scope.getAllManjianConfig = function(){
+        $http({
+            method:"GET",
+            url:base_url+"/manjian/findallByShop?shop_id="+admin_user.shopId,
+            cache:false,
+        }).success(function (data,status) {
+            if(data.code=='0'){
+                $scope.manjianList = data.data;
+            }else{
+                layui.layer.alert(data.msg);
+            }
+        })
+            .error(function (response,status,header) {
+                layui.layer.alert('系统繁忙、稍后再试');
+            });
+    }
+
+    $scope.getAllManjianConfig();
+
+    /**
+     * 删除打折配置
+     */
+    $scope.delete_realdiscount = function(id){
+
+        var layer = layui.layer;
+        var dialog = layui.dialog;
+        dialog.confirm({
+            message:'您确定删除此配置？',
+            success:function(){
+                $http({
+                    method:"POST",
+                    url:base_url+"/realdiscount/delete",
+                    data:{
+                        id:id
+                    },
+                    cache:false,
+                }).success(function (data,status) {
+                    if(data.code=='0'){
+                        layer.closeAll();
+                        $scope.getAllRealDiscountConfig();
+                    }else{
+                        layer.alert(data.msg);
+                    }
+                }).error(function (response,status,header) {
+                    layer.alert('系统繁忙、稍后再试');
+                });
+            },
+            cancel:function(){
+            }
+        });
+    }
+
+    /**
+     * 删除打折配置
+     */
+    $scope.delete_manjian = function(id){
+
+        var layer = layui.layer;
+        var dialog = layui.dialog;
+        dialog.confirm({
+            message:'您确定删除此配置？',
+            success:function(){
+                $http({
+                    method:"POST",
+                    url:base_url+"/manjian/delete",
+                    data:{
+                        config_id:id
+                    },
+                    cache:false,
+                }).success(function (data,status) {
+                    if(data.code=='0'){
+                        layer.closeAll();
+                        $scope.getAllManjianConfig();
+                    }else{
+                        layer.alert(data.msg);
+                    }
+                }).error(function (response,status,header) {
+                    layer.alert('系统繁忙、稍后再试');
+                });
+            },
+            cancel:function(){
+            }
+        });
+    }
+
+    /**
+     * 修改状态
+     * @param id
+     * @param status
+     */
+    $scope.change_realdiscount_status = function(id,status){
+        var layer = layui.layer;
+        var dialog = layui.dialog;
+        dialog.confirm({
+            message:'您确定执行此操作？',
+            success:function(){
+                $http({
+                    method:"POST",
+                    url:base_url+"/realdiscount/changeStatus",
+                    data:{
+                        config_id:id,
+                        status:status
+                    },
+                    cache:false,
+                }).success(function (data,status) {
+                    if(data.code=='0'){
+                        layer.closeAll();
+                        $scope.getAllRealDiscountConfig();
+                    }else{
+                        layer.alert(data.msg);
+                    }
+                }).error(function (response,status,header) {
+                    layer.alert('系统繁忙、稍后再试');
+                });
+            },
+            cancel:function(){
+            }
+        });
+    }
+
+    /**
+     * 修改状态
+     * @param id
+     * @param status
+     */
+    $scope.change_manjian_status = function(id,status){
+        var layer = layui.layer;
+        var dialog = layui.dialog;
+        dialog.confirm({
+            message:'您确定执行此操作？',
+            success:function(){
+                $http({
+                    method:"POST",
+                    url:base_url+"/manjian/changeStatus",
+                    data:{
+                        config_id:id,
+                        status:status
+                    },
+                    cache:false,
+                }).success(function (data,status) {
+                    if(data.code=='0'){
+                        layer.closeAll();
+                        $scope.getAllManjianConfig();
+                    }else{
+                        layer.alert(data.msg);
+                    }
+                }).error(function (response,status,header) {
+                    layer.alert('系统繁忙、稍后再试');
+                });
+            },
+            cancel:function(){
+            }
+        });
+    }
+
+    $scope.addRealDiscountClick = function(){
+        $location.path("realDiscountConfig");
+    }
+
+    $scope.addManjianClick = function(){
+        $location.path("manjianConfig");
+    }
+
+
+
 }]);

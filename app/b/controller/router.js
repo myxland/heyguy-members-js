@@ -317,6 +317,32 @@ app.config(['$stateProvider','$httpProvider','$urlRouterProvider', function($sta
                     )
                 }]
         }
+    }).state('/manjianConfig', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/manjianConfig',
+        templateUrl:'./view/addManjian.html',
+        controller:'addManjianController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addManjianController.js']}
+                    )
+                }]
+        }
+    }).state('/realDiscountConfig', { //导航用的名字，如<a ui-sref="login">login</a>里的login
+        url: '/realDiscountConfig',
+        templateUrl:'./view/addRealDiscount.html',
+        controller:'addRealDiscountController',
+        resolve: {
+            deps: ['$ocLazyLoad',
+                function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'shopApp',
+                        files:['./controller/addRealDiscountController.js']}
+                    )
+                }]
+        }
     });
 
     $urlRouterProvider.otherwise('/main');

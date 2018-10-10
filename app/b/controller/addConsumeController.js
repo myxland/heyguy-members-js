@@ -38,6 +38,7 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
         });
     }
 
+    var yh_id = ""; //manjian_id,realdiscount_id
     $scope.addConsume = function(){
         var coupons_id = $("input[name='user_coupons']:checked").val();
         if(coupons_id==undefined){
@@ -61,7 +62,8 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
                 cardNo:$scope.userBean.card.cardNo,
                 shopId:$scope.userBean.card.shopId,
                 user_coupons_id:coupons_id,
-                should_pay:fee
+                should_pay:fee,
+                yh_id:yh_id
             },
             cache:false,
         }).success(function (data,status) {
@@ -125,7 +127,7 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             method:"POST",
             url:base_url+"/base/sms/sendCheckCode",
             data:{
-                phone:$scope.userPhone
+                phone:$scope.userBean.userPhone
             },
             cache:false,
         }).success(function (data,status) {
@@ -215,6 +217,37 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
     $scope.shop_pay_fee_change = function(){
         var should_pay = $scope.fee;
         if(should_pay!=undefined){
+            //设置折扣
+            if($scope.realdiscount!=undefined){
+                var youhui_id = $("input[name='youhui']:checked").val();
+                if(youhui_id!=undefined){ //并且选中满减
+                    if(youhui_id.split("_")[0]=='realdiscount'){
+                        should_pay = parseFloat(should_pay*$scope.realdiscount.discountValue/100).toFixed(2);
+                        yh_id = youhui_id
+                    }
+                }
+            }
+            //如果店铺设置满减
+            if($scope.manjian!=undefined){
+                var manjian_enable = false;
+                if(parseInt($scope.fee*100)>=parseInt($scope.manjian.man*100)){
+                    $("#manjian").attr('disabled',false);
+                    manjian_enable = true;
+                }else{
+                    $("#manjian").attr("checked",false);
+                    $("#manjian").attr('disabled',"disabled");
+                    manjian_enable = false;
+                }
+                var youhui_id = $("input[name='youhui']:checked").val();
+                if(youhui_id!=undefined){ //并且选中满减
+                    if(youhui_id.split("_")[0]=='manjian'&&manjian_enable){
+                        should_pay = parseFloat(should_pay-$scope.manjian.jian).toFixed(2)>0?parseFloat(should_pay-$scope.manjian.jian).toFixed(2):0;
+                        yh_id = youhui_id;
+                    }
+                }
+             }
+
+
             if($scope.coupons_value!=undefined){
                 $scope.real_pay_fee = parseFloat(should_pay-$scope.coupons_value).toFixed(2)>0?parseFloat(should_pay-$scope.coupons_value).toFixed(2):0;
             }else{
@@ -222,6 +255,47 @@ app.controller('addConsumeController',['$scope','$http','$location','$window','c
             }
         }
 
+
     }
+
+    /**
+     * 加载商家满减优惠
+     */
+    $scope.findManjian = function(){
+        $http({
+            method:"GET",
+            url:base_url+"/manjian/findEnable?shop_id="+admin_user.shopId,
+            cache:false,
+        }).success(function (data,status) {
+            if(data.code=='0'){
+                $scope.manjian = data.data;
+            }else{
+                layui.layer.msg(data.msg);
+            }
+        }).error(function (response,status,header) {
+            layui.layer.msg('系统繁忙、稍后再试');
+        });
+    }
+    $scope.findManjian();
+
+    /**
+     * 查询店铺打折配置
+     */
+    $scope.findRealDiscount = function(){
+        $http({
+            method:"GET",
+            url:base_url+"/realdiscount/findOneEnable?shop_id="+admin_user.shopId,
+            cache:false,
+        }).success(function (data,status) {
+            if(data.code=='0'){
+                $scope.realdiscount = data.data;
+            }else{
+                layui.layer.msg(data.msg);
+            }
+        }).error(function (response,status,header) {
+            layui.layer.msg('系统繁忙、稍后再试');
+        });
+    }
+    $scope.findRealDiscount();
 
 }]);

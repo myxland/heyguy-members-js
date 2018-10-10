@@ -1,0 +1,55 @@
+<div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+    <ul class="layui-tab-title">
+        <li class="layui-this welcome">消费满减优惠</li>
+    </ul>
+    <div class="layui-col-md12">
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show" style="background: #e8eeef;">
+                <div class="wrap-container">
+                    <form class="" style="width: 90%;padding-top: 20px;">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">满减类型：</label>
+                            <div class="layui-input-block">
+                                <input  type="radio" name ="manjianType" value="0" checked ng-click="type_click();">长期有效
+                                <input type="radio" name="manjianType" value="1" ng-click="type_click();">限时有效
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item" id="manjian_date" style="display: none;">
+                            <label class="layui-form-label">消费满减有效期：</label>
+                            <div class="layui-input-block">
+                                <input style="height: 35px; width:20%;" required lay-verify="required"  class="layui-input" ng-model="startDate">至<input style="height: 35px; width:20%;" required lay-verify="required"  class="layui-input" ng-model="endDate">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">满减内容：</label>
+                            <div class="layui-input-block">
+                                满<input type="number" style="height: 35px;" required lay-verify="required" autocomplete="off" class="layui-input" ng-model="man">
+                                减<input type="number" style="height: 35px;" required lay-verify="required" autocomplete="off" class="layui-input" ng-model="jian">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否允许跟其他优惠共同使用：</label>
+                            <div class="layui-input-block">
+                                <input  type="radio" name ="ifOver" value="0" checked>否
+                                <input type="radio" name="ifOver" value="1" >是
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-btn-danger" ng-click="addManjianConfig();">立即提交</button>
+                                <button type="reset" class="layui-btn layui-btn-primary" ng-click="goBack();">返回</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

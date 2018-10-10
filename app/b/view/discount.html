@@ -2,6 +2,8 @@
 	<ul class="layui-tab-title">
 		<li class="layui-this welcome" ng-click="tab_click('recharge_discount')">充值优惠配置</li>
 		<li class="welcome" ng-click="tab_click('coupons_discount')">优惠券配置</li>
+		<li class="welcome" ng-click="tab_click('real_discount')">折扣配置</li>
+		<li class="welcome" ng-click="tab_click('manjian_discount')">满减配置</li>
 	</ul>
 
 	<div class="layui-tab-content" id="recharge_discount" >
@@ -106,6 +108,128 @@
 										<button ng-show="c.status==1" class="layui-btn layui-btn-small layui-btn-danger" ng-click="change_config_status(c.id,0)">弃用</button>
 										<button ng-show="c.status==0" class="layui-btn layui-btn-small layui-btn-defult" ng-click="change_config_status(c.id,1)">启用</button>
 										<button class="layui-btn layui-btn-small layui-btn-warm delBtn" ng-click="delete_config(c.id);">删除</button>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="layui-tab-content" id="real_discount" style="display: none;">
+		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
+			<div class="wrap-container clearfix">
+				<div class="column-content-detail">
+					<form class="layui-form" action="">
+						<div class="layui-form-item">
+							<p class="layui-btn layui-btn-danger" ng-click="addRealDiscountClick();">新增折扣配置</p>
+						</div>
+					</form>
+					<div class="layui-form">
+						<table class="layui-table" lay-even lay-skin="nob">
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<!--<col>-->
+							</colgroup>
+							<thead>
+							<tr>
+								<th class="table-center">编号</th>
+								<th class="table-center">折扣类型</th>
+								<th class="table-center">折扣</th>
+								<th class="table-center">生效时间</th>
+								<th class="table-center">是否可叠加</th>
+								<th class="table-center">状态</th>
+								<th class="table-center">创建时间</th>
+								<th class="table-center">操作</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="d in realDiscountList">
+								<td class="table-center">{{$index+1}}</td>
+								<td class="table-center">{{d.type | discount_type}}</td>
+								<td class="table-center">{{d.discountValue}}</td>
+								<td class="table-center" ng-show="d.type==0">长期有效</td>
+								<td class="table-center" ng-show="d.type==1">{{d.startDate | date:'yyyy-MM-dd'}}至{{d.endDate | date:'yyyy-MM-dd'}}</td>
+								<td class="table-center">{{d.if_over | discount_if_over}}</td>
+								<td class="table-center">{{d.status | discount_config_status}}</td>
+								<td class="table-center">{{d.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+								<td class="table-center">
+									<div class="layui-inline">
+										<button ng-show="d.status==1" class="layui-btn layui-btn-small layui-btn-danger" ng-click="change_realdiscount_status(d.id,0)">弃用</button>
+										<button ng-show="d.status==0" class="layui-btn layui-btn-small layui-btn-defult" ng-click="change_realdiscount_status(d.id,1)">启用</button>
+										<button class="layui-btn layui-btn-small layui-btn-warm delBtn" ng-click="delete_realdiscount(d.id);">删除</button>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="layui-tab-content" id="manjian_discount" style="display: none;">
+		<div class="layui-tab-item layui-show" style="background: #e8eeef;">
+			<div class="wrap-container clearfix">
+				<div class="column-content-detail">
+					<form class="layui-form" action="">
+						<div class="layui-form-item">
+							<p class="layui-btn layui-btn-danger" ng-click="addManjianClick();">新增满减配置</p>
+						</div>
+					</form>
+					<div class="layui-form">
+						<table class="layui-table" lay-even lay-skin="nob">
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<col>
+								<!--<col>-->
+							</colgroup>
+							<thead>
+							<tr>
+								<th class="table-center">编号</th>
+								<th class="table-center">满减类型</th>
+								<th class="table-center">满减内容</th>
+								<th class="table-center">生效时间</th>
+								<th class="table-center">是否可叠加</th>
+								<th class="table-center">状态</th>
+								<th class="table-center">创建时间</th>
+								<th class="table-center">操作</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="m in manjianList">
+								<td class="table-center">{{$index+1}}</td>
+								<td class="table-center">{{m.type | manjian_type}}</td>
+								<td class="table-center">满{{m.man}}减{{m.jian}}</td>
+								<td class="table-center" ng-show="m.type==0">长期有效</td>
+								<td class="table-center" ng-show="m.type==1">{{m.startDate | date:'yyyy-MM-dd'}}至{{m.endDate | date:'yyyy-MM-dd'}}</td>
+								<td class="table-center">{{m.if_over | manjian_if_over}}</td>
+								<td class="table-center">{{m.status | manjian_config_status}}</td>
+								<td class="table-center">{{m.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+								<td class="table-center">
+									<div class="layui-inline">
+										<button ng-show="m.status==1" class="layui-btn layui-btn-small layui-btn-danger" ng-click="change_manjian_status(m.id,0)">弃用</button>
+										<button ng-show="m.status==0" class="layui-btn layui-btn-small layui-btn-defult" ng-click="change_manjian_status(m.id,1)">启用</button>
+										<button class="layui-btn layui-btn-small layui-btn-warm delBtn" ng-click="delete_manjian(m.id);">删除</button>
 									</div>
 								</td>
 							</tr>

@@ -48,11 +48,11 @@
 						</label>
 					</div>
 					<div class="layui-form-item" ng-repeat="c in userBean.coupons_list">
-						<!--<label class="layui-form-label"><input value="{{c.id}}" ng-click="coupons_click(c.coupon_value);" type="radio" name="user_coupons"/></label>-->
-						<!--<div class="pt15">{{c.coupon_value}} 元优惠券(满{{c.min_use_fee}}元可用)</div><br>-->
 						<label class="layui-form-label"></label>
 						<label style="float:left;margin-top: 5px;"><input value="{{c.id}}" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;" ng-click="coupons_click(c.coupon_value);" type="radio" name="user_coupons"/>{{c.coupon_value}} 元优惠券(满{{c.min_use_fee}}元可用)</label>
 					</div>
+
+
 
 					<div class="layui-form-item">
 						<label class="layui-form-label">订单金额：</label>
@@ -66,6 +66,16 @@
 							<!--<input style="height: 35px;" type="text" name="title" placeholder="请输入验证码" autocomplete="off" class="layui-input" ng-model="checkCode">-->
 						<!--</div>-->
 					<!--</div>-->
+
+					<div class="" ng-show="manjian!=undefined">
+						<label class="layui-form-label"></label>
+						<label style="float:left;margin-top: 5px;"><input id="manjian" value="manjian_{{manjian.id}}" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;" disabled="disabled" ng-click="shop_pay_fee_change();" type="radio" name="youhui"/>满{{manjian.man}} 减 {{manjian.jian}}</label>
+					</div>
+					<div class="" ng-show="realdiscount!=undefined">
+						<label class="layui-form-label"></label>
+						<label style="float:left;margin-top: 5px;"><input value="realdiscount_{{realdiscount.id}}" style="vertical-align:middle; margin-top:-2px; margin-bottom:1px;" ng-click="shop_pay_fee_change();" type="radio" name="youhui"/>订单金额打{{realdiscount.discountValue}}(%)折</label>
+					</div>
+
 					<div class="layui-form-item">
 						<label class="layui-form-label">实付金额：</label>
 						<label id="real_pay" class="layui-form-label" style="text-align: left;color: red;">
