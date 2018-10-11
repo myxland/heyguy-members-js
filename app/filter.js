@@ -122,6 +122,84 @@ app.filter('coupons_use_status',function(){
     }
 });
 
+app.filter('discount_type',function(){
+    return function(type){
+        var type_name = "";
+        if(type=="0"){
+            type_name = "长期有效";
+        }
+        if(type=="1"){
+            type_name = "限时有效";
+        }
+        return type_name;
+    }
+});
+
+app.filter('discount_config_status',function(){
+    return function(parm){
+        var parm_value = "";
+        if(parm=="0"){
+            parm_value = "不生效";
+        }
+        if(parm=="1"){
+            parm_value = "生效";
+        }
+        return parm_value;
+    }
+});
+
+app.filter('discount_if_over',function(){
+    return function(parm){
+        var parm_value = "";
+        if(parm=="0"){
+            parm_value = "否";
+        }
+        if(parm=="1"){
+            parm_value = "是";
+        }
+        return parm_value;
+    }
+});
+
+app.filter('manjian_type',function(){
+    return function(type){
+        var type_name = "";
+        if(type=="0"){
+            type_name = "长期有效";
+        }
+        if(type=="1"){
+            type_name = "限时有效";
+        }
+        return type_name;
+    }
+});
+
+app.filter('manjian_config_status',function(){
+    return function(parm){
+        var parm_value = "";
+        if(parm=="0"){
+            parm_value = "不生效";
+        }
+        if(parm=="1"){
+            parm_value = "生效";
+        }
+        return parm_value;
+    }
+});
+
+app.filter('manjian_if_over',function(){
+    return function(parm){
+        var parm_value = "";
+        if(parm=="0"){
+            parm_value = "否";
+        }
+        if(parm=="1"){
+            parm_value = "是";
+        }
+        return parm_value;
+    }
+});
+
 
 
 
